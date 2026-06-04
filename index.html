@@ -1466,6 +1466,22 @@
 // LOGO_W removed — renderCanvas now uses per-template logo variants
 
 // ──────────────────────────────────────────────────────────────
+// ASSET_MAP fallback (standalone build injects real base64 URIs;
+// plain brandbook.html uses relative file paths instead)
+// ──────────────────────────────────────────────────────────────
+if (typeof ASSET_MAP === 'undefined') {
+  var ASSET_MAP = {
+    'logo-horizontal-dark.svg':  'logo-horizontal-dark.svg',
+    'logo-horizontal-white.svg': 'logo-horizontal-white.svg',
+    'logo-compact-dark.svg':     'logo-compact-dark.svg',
+    'logo-compact-white.svg':    'logo-compact-white.svg',
+    'logo-icon.svg':             'logo-icon.svg',
+    'logo-icon-white.svg':       'logo-icon-white.svg',
+    'logo-icon-dark.svg':        'logo-icon-dark.svg',
+  };
+}
+
+// ──────────────────────────────────────────────────────────────
 // STATE
 // ──────────────────────────────────────────────────────────────
 const S = { platform:'linkedin', tpl:'light-cta', pos:'tl', logo:true, customImg:null };
