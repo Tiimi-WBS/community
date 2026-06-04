@@ -1,0 +1,2302 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Community Retail AI — Brandbook</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary:       #FF6B03;
+      --primary-light: #FF8C3A;
+      --primary-dim:   rgba(255,107,3,0.1);
+      --dark:          #040407;
+      --surface:       #09090D;
+      --surface2:      #111117;
+      --surface3:      #1A1A22;
+      --border:        #222230;
+      --border2:       #2C2C3A;
+      --off-white:     #FDFCF8;
+      --warm-gray:     #F7F5F0;
+      --text:          #FDFCF8;
+      --text-muted:    #8A8A9E;
+      --text-dim:      #52526A;
+      --success:       #22C55E;
+      --sidebar-w:     252px;
+      --fd:            'Space Grotesk', sans-serif;
+      --fb:            'Plus Jakarta Sans', sans-serif;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{font-family:var(--fb);background:var(--dark);color:var(--text);min-height:100vh;font-size:15px;line-height:1.6;}
+
+    /* ── SIDEBAR ─────────────────────────── */
+    .sidebar{
+      position:fixed;left:0;top:0;bottom:0;width:var(--sidebar-w);
+      background:var(--surface);border-right:1px solid var(--border);
+      display:flex;flex-direction:column;z-index:100;overflow-y:auto;
+    }
+    .sb-head{
+      padding:28px 24px 22px;
+      border-bottom:1px solid var(--border);
+    }
+    .sb-brand{
+      font-family:var(--fd);font-size:14px;font-weight:600;
+      letter-spacing:-0.01em;color:var(--text-muted);margin-bottom:6px;
+    }
+    .sb-badge{
+      display:inline-block;background:var(--primary-dim);color:var(--primary);
+      font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+      padding:3px 9px;border-radius:4px;
+    }
+    .sb-nav{padding:18px 14px;flex:1;}
+    .nav-section{margin-bottom:24px;}
+    .nav-section-title{
+      font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+      color:var(--text-dim);padding:0 10px;margin-bottom:4px;
+    }
+    .nav-a{
+      display:flex;align-items:center;gap:10px;padding:7px 10px;
+      border-radius:8px;cursor:pointer;font-size:13px;font-weight:500;
+      color:var(--text-muted);text-decoration:none;transition:all .14s;
+    }
+    .nav-a:hover{background:var(--surface2);color:var(--text);}
+    .nav-a.active{background:var(--primary-dim);color:var(--primary);font-weight:600;}
+    .nav-pip{width:5px;height:5px;border-radius:50%;background:var(--border2);flex-shrink:0;}
+    .nav-a.active .nav-pip{background:var(--primary);}
+    .sb-foot{
+      padding:16px 24px;border-top:1px solid var(--border);
+      font-size:11px;color:var(--text-dim);line-height:1.7;
+    }
+
+    /* ── MAIN ────────────────────────────── */
+    .main{margin-left:var(--sidebar-w);}
+
+    /* ── SECTION BASE ────────────────────── */
+    .sec{padding:88px 72px;border-bottom:1px solid var(--border);}
+    .sec-alt{background:var(--surface);}
+    .slabel{
+      font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+      color:var(--primary);margin-bottom:14px;
+    }
+    .stitle{
+      font-family:var(--fd);font-size:48px;font-weight:700;
+      line-height:1.08;letter-spacing:-.025em;margin-bottom:20px;
+    }
+    .stitle em{color:var(--primary);font-style:normal;}
+    .sdesc{
+      font-size:16px;line-height:1.8;color:var(--text-muted);
+      max-width:620px;margin-bottom:56px;
+    }
+    .ssub{
+      font-family:var(--fd);font-size:21px;font-weight:600;
+      letter-spacing:-.01em;margin-bottom:20px;
+    }
+    hr.div{border:none;border-top:1px solid var(--border);margin:56px 0;}
+
+    /* ── HERO ─────────────────────────────── */
+    #brand{
+      background:var(--surface);padding:96px 72px;
+      position:relative;overflow:hidden;
+    }
+    #brand::after{
+      content:'';position:absolute;top:-160px;right:-100px;
+      width:540px;height:540px;
+      background:radial-gradient(circle,rgba(255,107,3,.07) 0%,transparent 65%);
+      pointer-events:none;
+    }
+    .hero-kicker{
+      font-size:11px;font-weight:700;letter-spacing:.18em;
+      text-transform:uppercase;color:var(--primary);margin-bottom:24px;
+    }
+    .hero-h1{
+      font-family:var(--fd);font-size:68px;font-weight:700;
+      line-height:1.04;letter-spacing:-.03em;max-width:680px;margin-bottom:28px;
+    }
+    .hero-h1 em{color:var(--primary);font-style:normal;}
+    .hero-p{
+      font-size:17px;line-height:1.8;color:var(--text-muted);
+      max-width:540px;margin-bottom:52px;
+    }
+    .hero-pills{display:flex;gap:12px;flex-wrap:wrap;}
+    .hero-pill{
+      padding:9px 18px;border-radius:24px;font-size:13px;font-weight:600;
+      border:1px solid var(--border2);color:var(--text-muted);
+    }
+    .hero-pill.orange{background:var(--primary-dim);border-color:rgba(255,107,3,.25);color:var(--primary);}
+
+    /* ── LOGO SECTION ─────────────────────── */
+    .logo-variants{
+      display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:48px;
+    }
+    .logo-card{
+      border-radius:16px;padding:52px 48px;
+      display:flex;flex-direction:column;gap:24px;
+      border:1px solid var(--border);min-height:200px;
+      justify-content:space-between;
+    }
+    .logo-card.v-dark{background:#040407;}
+    .logo-card.v-light{background:var(--off-white);}
+    .logo-card.v-orange{background:var(--primary);}
+    .logo-card.v-warm{background:var(--warm-gray);}
+    .logo-card-label{
+      font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+    }
+    .v-dark .logo-card-label,.v-orange .logo-card-label{color:rgba(253,252,248,.35);}
+    .v-light .logo-card-label,.v-warm .logo-card-label{color:rgba(4,4,7,.35);}
+    .logo-card img{height:60px;width:auto;max-width:100%;object-fit:contain;object-position:left center;}
+
+    /* compact variants row */
+    .logo-compact-row{
+      display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-bottom:48px;
+    }
+    .logo-compact-card{
+      border-radius:14px;padding:36px 32px;
+      display:flex;flex-direction:column;gap:16px;
+      border:1px solid var(--border);
+    }
+    .logo-compact-card.v-dark{background:#040407;}
+    .logo-compact-card.v-light{background:var(--off-white);}
+    .logo-compact-card.v-orange{background:var(--primary);}
+    .logo-compact-card img{height:48px;width:auto;object-fit:contain;object-position:left;}
+
+    /* ── PITTOGRAMMA / ICON ONLY ─────────────── */
+    .logo-icons-row{display:flex;gap:16px;margin-bottom:16px;flex-wrap:wrap;}
+    .logo-icon-card{
+      border-radius:14px;padding:28px;width:110px;height:110px;
+      display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+      border:1px solid var(--border);
+    }
+    .logo-icon-card.v-dark{background:#040407;}
+    .logo-icon-card.v-light{background:var(--off-white);border-color:rgba(0,0,0,.08);}
+    .logo-icon-card.v-orange{background:var(--primary);}
+    .logo-icon-card img{width:54px;height:54px;object-fit:contain;}
+    .logo-icon-lbl{font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;opacity:.45;}
+    .logo-icon-card.v-dark  .logo-icon-lbl{color:var(--off-white);}
+    .logo-icon-card.v-light .logo-icon-lbl{color:#040407;}
+    .logo-icon-card.v-orange .logo-icon-lbl{color:#040407;}
+    /* pittogramma download strip */
+    .pitto-dl{margin-bottom:48px;}
+    .pitto-dl-row{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;}
+    .pitto-dl-btn{
+      display:inline-flex;align-items:center;gap:6px;
+      padding:7px 14px;border-radius:8px;font-size:11px;font-weight:700;
+      text-decoration:none;border:1px solid var(--border2);color:var(--text-dim);
+      background:var(--surface3);transition:all .14s;
+    }
+    .pitto-dl-btn:hover{background:var(--primary-dim);border-color:var(--primary);color:var(--primary);}
+    .pitto-dl-btn.svg-btn{border-color:rgba(255,107,3,.3);color:rgba(255,107,3,.7);}
+
+
+    /* ── TEMPLATE GALLERY ────────────────────── */
+    .tpl-gallery{margin-bottom:56px;}
+    .tpl-gallery-title{
+      font-family:var(--fd);font-size:16px;font-weight:600;
+      letter-spacing:-.01em;margin-bottom:6px;color:var(--text);
+    }
+    .tpl-gallery-sub{
+      font-size:13px;color:var(--text-muted);margin-bottom:22px;
+    }
+    .tpl-gallery-grid{
+      display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
+    }
+    .tpl-gallery-item{
+      border-radius:12px;overflow:hidden;border:1px solid var(--border);
+      background:var(--surface2);transition:border-color .15s,transform .15s;
+      cursor:default;
+    }
+    .tpl-gallery-item:hover{border-color:var(--primary);transform:translateY(-2px);}
+    .tpl-gallery-item img{
+      width:100%;aspect-ratio:4/5;object-fit:cover;display:block;
+    }
+    .tpl-gallery-lbl{
+      padding:8px 12px 10px;font-size:11px;font-weight:600;
+      color:var(--text-muted);letter-spacing:.02em;
+      border-top:1px solid var(--border);
+    }
+
+    /* ── COLORS ───────────────────────────── */
+    .color-grid{
+      display:grid;grid-template-columns:repeat(5,1fr);gap:20px;margin-bottom:56px;
+    }
+    .color-card{border-radius:14px;overflow:hidden;border:1px solid var(--border);}
+    .color-swatch{height:96px;}
+    .color-info{background:var(--surface2);padding:16px;}
+    .color-name{font-family:var(--fd);font-size:14px;font-weight:600;margin-bottom:4px;}
+    .color-hex{font-family:var(--fd);font-size:12px;color:var(--text-dim);margin-bottom:4px;}
+    .color-role{font-size:11.5px;color:var(--text-dim);line-height:1.5;}
+
+    .combos{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+    .combo{border-radius:14px;padding:36px 32px;border:1px solid var(--border);}
+    .combo-tag{
+      font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+      margin-bottom:20px;opacity:.5;
+    }
+    .combo-n{
+      font-family:var(--fd);font-size:40px;font-weight:700;
+      line-height:1;letter-spacing:-.02em;margin-bottom:8px;
+    }
+    .combo-l{font-size:14px;font-weight:500;opacity:.75;}
+
+    /* ── TYPOGRAPHY ───────────────────────── */
+    .type-font-showcase{
+      display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:56px;
+    }
+    .type-font-half{
+      background:var(--surface2);padding:48px;
+    }
+    .type-font-half:first-child{border-radius:14px 0 0 14px;}
+    .type-font-half:last-child{border-radius:0 14px 14px 0;}
+    .type-font-kicker{
+      font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+      color:var(--primary);margin-bottom:24px;
+    }
+    .type-font-big{
+      font-size:64px;font-weight:700;line-height:1.05;letter-spacing:-.03em;
+      margin-bottom:16px;
+    }
+    .type-font-alpha{
+      font-size:18px;font-weight:400;line-height:1.6;color:var(--text-muted);
+      letter-spacing:.01em;
+    }
+    .type-font-name{
+      margin-top:20px;font-size:12px;font-weight:600;color:var(--text-dim);
+      border-top:1px solid var(--border);padding-top:16px;
+    }
+    .type-font-weights{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;}
+    .type-w-chip{
+      padding:3px 10px;border-radius:4px;font-size:11px;font-weight:600;
+      background:var(--surface3);color:var(--text-dim);
+    }
+
+    /* specimen */
+    .type-specimen{margin-top:56px;}
+    .type-specimen-title{
+      font-family:var(--fd);font-size:13px;font-weight:700;letter-spacing:.1em;
+      text-transform:uppercase;color:var(--text-dim);
+      margin-bottom:4px;padding-bottom:20px;
+      border-bottom:1px solid var(--border);
+    }
+    .type-row{
+      display:grid;grid-template-columns:180px 1fr;gap:24px;
+      align-items:baseline;padding:28px 0;
+      border-bottom:1px solid var(--border);
+    }
+    .type-meta-name{font-size:12px;font-weight:600;color:var(--text-muted);}
+    .type-meta-spec{font-size:11px;color:var(--text-dim);margin-top:3px;line-height:1.5;}
+    .t-h1{font-family:var(--fd);font-size:60px;font-weight:700;letter-spacing:-.03em;line-height:1;}
+    .t-h2{font-family:var(--fd);font-size:40px;font-weight:700;letter-spacing:-.02em;line-height:1.1;}
+    .t-h3{font-family:var(--fd);font-size:28px;font-weight:600;letter-spacing:-.01em;}
+    .t-h4{font-family:var(--fd);font-size:20px;font-weight:600;}
+    .t-bl{font-size:17px;font-weight:400;line-height:1.8;color:var(--text-muted);}
+    .t-b{font-size:15px;font-weight:400;line-height:1.75;color:var(--text-muted);}
+    .t-cap{font-size:12px;font-weight:500;letter-spacing:.02em;color:var(--text-dim);}
+
+    /* ── VOICE ────────────────────────────── */
+    .voice-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:48px;}
+    .voice-card{
+      background:var(--surface2);border:1px solid var(--border);
+      border-radius:14px;padding:32px;
+    }
+    .voice-icon{
+      width:44px;height:44px;border-radius:10px;background:var(--primary-dim);
+      display:flex;align-items:center;justify-content:center;
+      font-size:20px;margin-bottom:18px;
+    }
+    .voice-title{font-family:var(--fd);font-size:18px;font-weight:600;margin-bottom:10px;}
+    .voice-text{font-size:14px;line-height:1.7;color:var(--text-muted);}
+
+    .dodonts{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:48px;}
+    .do-box,.dont-box{border-radius:14px;padding:28px;}
+    .do-box{background:rgba(34,197,94,.05);border:1px solid rgba(34,197,94,.2);}
+    .dont-box{background:rgba(239,68,68,.05);border:1px solid rgba(239,68,68,.2);}
+    .do-h{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#22C55E;margin-bottom:16px;}
+    .dont-h{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#F87171;margin-bottom:16px;}
+    .ex{
+      font-size:13.5px;line-height:1.7;color:var(--text-muted);
+      padding:9px 0;border-bottom:1px solid rgba(255,255,255,.04);
+    }
+    .ex:last-child{border-bottom:none;}
+    .do-box .ex::before{content:'✓ ';color:#22C55E;font-weight:700;}
+    .dont-box .ex::before{content:'✗ ';color:#F87171;font-weight:700;}
+
+    .hashtags{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;}
+    .hashtag{
+      padding:6px 14px;border-radius:20px;font-family:var(--fd);
+      font-size:13px;font-weight:500;color:var(--text-muted);
+      background:var(--surface3);border:1px solid var(--border2);
+    }
+
+    /* ── SOCIAL ───────────────────────────── */
+    .ptabs{
+      display:flex;gap:4px;margin-bottom:32px;
+      border-bottom:1px solid var(--border);padding-bottom:0;
+    }
+    .ptab{
+      padding:10px 22px;font-size:13px;font-weight:600;color:var(--text-dim);
+      cursor:pointer;border-bottom:2px solid transparent;
+      transition:all .14s;margin-bottom:-1px;
+    }
+    .ptab:hover{color:var(--text-muted);}
+    .ptab.on{color:var(--primary);border-bottom-color:var(--primary);}
+    .ppanel{display:none;}
+    .ppanel.on{display:block;}
+
+    .pspecs{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px;}
+    .pspec{
+      background:var(--surface2);border:1px solid var(--border);
+      border-radius:10px;padding:18px;
+    }
+    .pspec-l{
+      font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+      color:var(--text-dim);margin-bottom:8px;
+    }
+    .pspec-v{font-family:var(--fd);font-size:14px;font-weight:600;line-height:1.4;}
+
+    .pgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+    .pcard{
+      background:var(--surface2);border:1px solid var(--border);
+      border-radius:12px;padding:24px;
+    }
+    .pcard-t{font-family:var(--fd);font-size:15px;font-weight:600;margin-bottom:10px;}
+    .pcard-b{font-size:13.5px;line-height:1.7;color:var(--text-muted);}
+    .pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;}
+    .pill{
+      padding:4px 12px;border-radius:20px;font-size:12px;font-weight:500;
+      background:var(--surface3);border:1px solid var(--border2);color:var(--text-muted);
+    }
+    .pill.o{background:var(--primary-dim);border-color:rgba(255,107,3,.25);color:var(--primary);}
+
+    /* ── TEMPLATE STUDIO ──────────────────── */
+    #studio{background:var(--surface);padding:88px 72px;border-bottom:none;}
+    .studio-wrap{display:grid;grid-template-columns:1fr 400px;gap:40px;align-items:start;}
+    .studio-left{position:sticky;top:32px;}
+
+    /* platform tabs */
+    .stabs{display:flex;gap:6px;margin-bottom:20px;}
+    .stab{
+      padding:7px 18px;font-size:12px;font-weight:600;border-radius:20px;
+      cursor:pointer;transition:all .14s;border:1px solid var(--border);
+      color:var(--text-dim);background:transparent;
+    }
+    .stab:hover{border-color:var(--border2);color:var(--text-muted);}
+    .stab.on{background:var(--primary);color:#fff;border-color:var(--primary);}
+
+    /* template thumbs */
+    .tpl-thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px;}
+    .tpl-thumb{
+      aspect-ratio:1;border-radius:8px;cursor:pointer;
+      border:2px solid var(--border);overflow:hidden;transition:all .14s;
+    }
+    .tpl-thumb:hover{border-color:var(--border2);}
+    .tpl-thumb.on{border-color:var(--primary);box-shadow:0 0 0 3px rgba(255,107,3,.15);}
+    .tpl-thumb-inner{
+      width:100%;height:100%;display:flex;flex-direction:column;
+      align-items:center;justify-content:center;padding:6px;
+      font-family:var(--fd);font-size:9px;font-weight:700;
+      color:rgba(255,107,3,.7);text-align:center;line-height:1.3;
+      position:relative;overflow:hidden;
+    }
+
+    /* canvas */
+    .canvas-wrap{
+      background:var(--surface2);border:1px solid var(--border);
+      border-radius:16px;overflow:hidden;aspect-ratio:1;position:relative;
+    }
+    .canvas-inner{width:100%;height:100%;position:relative;}
+
+    /* ── BASE TEMPLATE SHELL ── */
+    .tpl{
+      width:100%;height:100%;display:flex;flex-direction:column;
+      justify-content:stretch;padding:0;position:relative;overflow:hidden;
+    }
+
+    /* ─ logo overlay (user-controlled) ─ */
+    .tpl-logo{position:absolute;z-index:10;pointer-events:none;}
+    .tpl-logo.br{bottom:6%;right:6%;}
+    .tpl-logo.bl{bottom:6%;left:6%;}
+    .tpl-logo.tr{top:6%;right:6%;}
+    .tpl-logo.tl{top:6%;left:6%;}
+    .tpl-logo img{height:clamp(18px,5%,28px);width:auto;}
+
+    /* ─ common text helpers ─ */
+    .t-label{
+      font-family:var(--fd);font-size:clamp(7px,1.4vw,10px);font-weight:600;
+      letter-spacing:.08em;text-transform:uppercase;
+    }
+    .t-title{
+      font-family:var(--fd);font-weight:800;line-height:1.05;
+      position:relative;z-index:1;
+    }
+    .t-body{
+      font-size:clamp(8px,1.6vw,11px);line-height:1.55;
+      position:relative;z-index:1;
+    }
+
+    /* ══════════════════════════════════════
+       1 · LIGHT HERO
+       White bg · horizontal dark logo TL · 3-line title · CTA pill
+    ══════════════════════════════════════ */
+    .tpl-light-hero{background:#FDFCF8;}
+    .lh-inner{
+      width:100%;height:100%;display:flex;flex-direction:column;
+      padding:8% 8% 8%;
+    }
+    .lh-logo{height:clamp(18px,4.5%,30px);width:auto;display:block;margin-bottom:auto;}
+    .lh-title{
+      font-family:var(--fd);font-weight:800;
+      font-size:clamp(16px,5vw,38px);line-height:1.05;
+      color:#040407;margin-top:10%;
+    }
+    .lh-title em{color:#FF6B03;font-style:normal;display:block;}
+    .lh-cta{
+      margin-top:auto;padding-top:8%;
+      display:flex;flex-direction:column;align-items:flex-start;gap:4%;
+    }
+    .lh-btn{
+      display:inline-block;background:#FF6B03;color:#fff;
+      font-family:var(--fd);font-size:clamp(8px,1.8vw,12px);font-weight:700;
+      padding:.55em 1.4em;border-radius:100px;
+    }
+    .lh-url{font-size:clamp(6px,1.2vw,9px);color:rgba(4,4,7,.35);font-family:var(--fd);}
+
+    /* ══════════════════════════════════════
+       2 · DARK CARD
+       Black bg · compact white icon TL · off-white quote card bottom
+    ══════════════════════════════════════ */
+    .tpl-dark-card{background:#040407;}
+    .dc-inner{width:100%;height:100%;display:flex;flex-direction:column;padding:7%;}
+    .dc-icon{height:clamp(14px,3.5%,22px);width:auto;display:block;}
+    .dc-card{
+      margin-top:auto;
+      background:#FDFCF8;border-radius:clamp(8px,2%,14px);padding:7% 8% 6%;
+    }
+    .dc-dot{
+      width:clamp(10px,2.5%,16px);height:clamp(10px,2.5%,16px);
+      border-radius:50%;background:#FF6B03;margin-bottom:6%;
+    }
+    .dc-quote{
+      font-size:clamp(9px,2vw,13px);color:#040407;
+      line-height:1.5;font-style:italic;
+    }
+    .dc-attr{
+      font-size:clamp(7px,1.4vw,10px);color:rgba(4,4,7,.4);
+      margin-top:5%;letter-spacing:.02em;
+    }
+
+    /* ══════════════════════════════════════
+       3 · DARK GLOW
+       Black bg · orange radial glow BL · horiz white logo TL · big number
+    ══════════════════════════════════════ */
+    .tpl-dark-glow{background:#040407;}
+    .tpl-dark-glow::after{
+      content:'';position:absolute;bottom:-20%;left:-20%;
+      width:85%;height:85%;
+      background:radial-gradient(circle at 25% 75%,
+        rgba(255,107,3,.38) 0%,
+        rgba(255,107,3,.15) 30%,
+        transparent 65%);
+      z-index:0;pointer-events:none;
+    }
+    .dg-inner{
+      width:100%;height:100%;display:flex;flex-direction:column;
+      padding:7%;position:relative;z-index:1;
+    }
+    .dg-logo{height:clamp(16px,4%,26px);width:auto;display:block;}
+    .dg-num{
+      font-family:var(--fd);font-weight:800;
+      font-size:clamp(24px,7.5vw,58px);line-height:1;
+      color:#FDFCF8;margin-top:auto;
+    }
+    .dg-sub{
+      font-size:clamp(8px,1.6vw,11px);color:rgba(253,252,248,.45);
+      margin-top:2%;letter-spacing:.03em;
+    }
+    .dg-sep{height:1px;background:rgba(255,107,3,.2);margin:5% 0;}
+    .dg-body{font-size:clamp(8px,1.6vw,11px);color:rgba(253,252,248,.55);}
+
+    /* ══════════════════════════════════════
+       4 · IMAGE + TITLE
+       Full-bleed image placeholder · gradient overlay · icon TL · title BL
+    ══════════════════════════════════════ */
+    .tpl-img-title{background:#040407;}
+    .it-img{
+      position:absolute;inset:0;z-index:0;
+      background:repeating-linear-gradient(
+        45deg,
+        #111117 0px, #111117 20px,
+        #151519 20px, #151519 40px
+      );
+      display:flex;align-items:center;justify-content:center;
+    }
+    .it-img-label{
+      font-family:var(--fd);font-size:clamp(9px,1.8vw,12px);color:rgba(253,252,248,.15);
+      letter-spacing:.12em;text-transform:uppercase;position:relative;z-index:1;
+    }
+    .it-overlay{
+      position:absolute;inset:0;z-index:1;
+      background:linear-gradient(to top,
+        rgba(4,4,7,.92) 0%,
+        rgba(4,4,7,.5) 45%,
+        transparent 70%);
+    }
+    .it-icon{
+      position:absolute;top:7%;left:7%;z-index:3;
+      height:clamp(14px,3.5%,22px);width:auto;
+    }
+    .it-title{
+      position:absolute;bottom:8%;left:8%;right:8%;z-index:3;
+    }
+    .it-title .t-title{
+      font-size:clamp(14px,4vw,28px);color:#FDFCF8;
+    }
+    .it-title .t-title em{color:#FF6B03;font-style:normal;display:block;}
+    .it-title .t-body{color:rgba(253,252,248,.4);margin-top:3%;}
+
+    /* ══════════════════════════════════════
+       5 · IMAGE + CARD
+       Full-bleed image · dark overlay · icon TL · off-white card BR
+    ══════════════════════════════════════ */
+    .tpl-img-card{background:#040407;}
+    .ic-img{
+      position:absolute;inset:0;z-index:0;
+      background:repeating-linear-gradient(
+        45deg,
+        #111117 0px, #111117 20px,
+        #151519 20px, #151519 40px
+      );
+      display:flex;align-items:center;justify-content:center;
+    }
+    .ic-img-label{
+      font-family:var(--fd);font-size:clamp(9px,1.8vw,12px);color:rgba(253,252,248,.15);
+      letter-spacing:.12em;text-transform:uppercase;
+    }
+    .ic-overlay{
+      position:absolute;inset:0;z-index:1;
+      background:rgba(4,4,7,.45);
+    }
+    .ic-icon{
+      position:absolute;top:7%;left:7%;z-index:3;
+      height:clamp(14px,3.5%,22px);width:auto;
+    }
+    .ic-card{
+      position:absolute;bottom:7%;right:7%;z-index:3;
+      background:#FDFCF8;border-radius:clamp(6px,1.5%,12px);
+      padding:6% 7%;width:54%;
+    }
+    .ic-card .ic-text{font-size:clamp(8px,1.7vw,11px);color:#040407;line-height:1.5;}
+    .ic-card .ic-cta{
+      font-family:var(--fd);font-size:clamp(7px,1.4vw,9px);
+      font-weight:700;color:#FF6B03;margin-top:5%;
+      letter-spacing:.04em;text-transform:uppercase;
+    }
+
+    /* ══════════════════════════════════════
+       6 · ORANGE BOLD
+       Full orange bg · horiz white logo TL · huge 3-line dark+white title
+    ══════════════════════════════════════ */
+    .tpl-orange-bold{background:#FF6B03;}
+    .ob-inner{
+      width:100%;height:100%;display:flex;flex-direction:column;
+      padding:7% 8%;
+    }
+    .ob-logo{height:clamp(16px,4%,26px);width:auto;display:block;}
+    .ob-title{
+      font-family:var(--fd);font-weight:800;
+      font-size:clamp(18px,6vw,46px);line-height:1;
+      margin-top:auto;
+    }
+    .ob-title .ob-l1{color:#FDFCF8;}
+    .ob-title .ob-l2{color:#040407;}
+    .ob-title .ob-l3{color:#FDFCF8;}
+    .ob-url{
+      font-size:clamp(7px,1.3vw,10px);color:rgba(253,252,248,.5);
+      font-family:var(--fd);margin-top:4%;
+    }
+
+    /* ══════════════════════════════════════
+       7 · DARK CLEAN
+       Black bg · compact icon TL · 3-level hierarchy: white/orange/muted
+    ══════════════════════════════════════ */
+    .tpl-dark-clean{background:#040407;}
+    .dclean-inner{
+      width:100%;height:100%;display:flex;flex-direction:column;
+      padding:7%;
+    }
+    .dclean-icon{height:clamp(14px,3.5%,22px);width:auto;display:block;}
+    .dclean-body{
+      flex:1;display:flex;flex-direction:column;
+      justify-content:center;gap:1%;padding-top:8%;
+    }
+    .dclean-t1{
+      font-family:var(--fd);font-weight:800;
+      font-size:clamp(18px,5.5vw,40px);line-height:1;
+      color:#FDFCF8;
+    }
+    .dclean-t2{
+      font-family:var(--fd);font-weight:800;
+      font-size:clamp(18px,5.5vw,40px);line-height:1;
+      color:#FF6B03;
+    }
+    .dclean-t3{
+      font-size:clamp(8px,1.6vw,11px);color:rgba(253,252,248,.4);
+      margin-top:4%;line-height:1.5;
+    }
+    .dclean-url{
+      font-size:clamp(7px,1.3vw,9px);color:rgba(253,252,248,.25);
+      font-family:var(--fd);margin-top:auto;
+    }
+
+    /* ══════════════════════════════════════
+       8 · SPLIT
+       Top 58% dark image placeholder · Bottom 42% off-white with text+logo
+    ══════════════════════════════════════ */
+    .tpl-split{background:transparent;padding:0;}
+    .sp-top{
+      flex:0 0 58%;
+      background:repeating-linear-gradient(
+        45deg,
+        #111117 0px, #111117 20px,
+        #151519 20px, #151519 40px
+      );
+      position:relative;
+      display:flex;align-items:center;justify-content:center;overflow:hidden;
+    }
+    .sp-top-label{
+      font-family:var(--fd);font-size:clamp(9px,1.8vw,12px);
+      color:rgba(253,252,248,.15);letter-spacing:.12em;text-transform:uppercase;
+    }
+    .sp-top-icon{
+      position:absolute;top:7%;left:7%;
+      height:clamp(14px,3.5%,22px);width:auto;
+    }
+    .sp-bottom{
+      flex:0 0 42%;
+      background:#FDFCF8;padding:6% 8%;
+      display:flex;flex-direction:column;justify-content:space-between;
+    }
+    .sp-text{font-size:clamp(9px,1.9vw,13px);color:#040407;line-height:1.5;font-weight:500;}
+    .sp-logo{height:clamp(16px,4%,24px);width:auto;display:block;margin-top:auto;padding-top:4%;}
+
+    /* logo overlay */
+    .tpl-logo{position:absolute;z-index:10;pointer-events:none;}
+    .tpl-logo.br{bottom:7%;right:7%;}
+    .tpl-logo.bl{bottom:7%;left:7%;}
+    .tpl-logo.tr{top:7%;right:7%;}
+    .tpl-logo.tl{top:7%;left:7%;}
+    .tpl-logo img{width:clamp(58px,14%,84px);height:auto;}
+
+    /* upload */
+    .upload-z{
+      border:2px dashed var(--border2);border-radius:10px;
+      padding:18px;text-align:center;cursor:pointer;
+      transition:all .14s;position:relative;margin-top:12px;
+    }
+    .upload-z:hover{border-color:var(--primary);background:var(--primary-dim);}
+    .upload-z input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;}
+    .upload-z-t{font-size:13px;color:var(--text-dim);}
+    .upload-z-s{font-size:11px;color:var(--text-dim);margin-top:3px;}
+    #tpl-bg-img{
+      position:absolute;inset:0;width:100%;height:100%;
+      object-fit:cover;z-index:0;
+    }
+
+    /* ── STUDIO CONTROLS ──────────────────── */
+    .ctrls{display:flex;flex-direction:column;gap:18px;}
+    .ctrl{
+      background:var(--surface2);border:1px solid var(--border);
+      border-radius:12px;padding:20px;
+    }
+    .ctrl-l{
+      font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+      color:var(--text-dim);margin-bottom:12px;
+    }
+    .radios{display:flex;flex-wrap:wrap;gap:8px;}
+    .radio{
+      padding:6px 14px;font-size:12px;font-weight:500;border-radius:20px;
+      cursor:pointer;transition:all .14s;border:1px solid var(--border);
+      color:var(--text-dim);user-select:none;
+    }
+    .radio:hover{border-color:var(--border2);color:var(--text-muted);}
+    .radio.on{background:var(--surface3);border-color:var(--border2);color:var(--text);}
+
+    .pos-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+    .pos-btn{
+      aspect-ratio:1;border-radius:8px;background:var(--surface3);
+      border:1px solid var(--border);cursor:pointer;
+      display:flex;align-items:center;justify-content:center;
+      font-size:14px;color:var(--text-dim);transition:all .14s;
+    }
+    .pos-btn:hover{border-color:var(--border2);}
+    .pos-btn.on{background:var(--primary-dim);border-color:var(--primary);color:var(--primary);}
+
+    .tog-row{display:flex;align-items:center;justify-content:space-between;}
+    .tog-l{font-size:13px;font-weight:500;color:var(--text-muted);}
+    .tog{
+      width:44px;height:24px;border-radius:12px;
+      background:var(--surface3);border:1px solid var(--border);
+      cursor:pointer;position:relative;transition:background .18s;
+    }
+    .tog.on{background:var(--primary);border-color:var(--primary);}
+    .tog::after{
+      content:'';position:absolute;top:3px;left:3px;
+      width:16px;height:16px;border-radius:50%;background:#fff;
+      transition:transform .18s;
+    }
+    .tog.on::after{transform:translateX(20px);}
+
+    /* ── PROMPT SECTION ───────────────────── */
+    .prompts-area{margin-top:40px;}
+    .prompts-header{
+      display:flex;align-items:center;gap:16px;margin-bottom:24px;
+    }
+    .prompts-title{
+      font-family:var(--fd);font-size:20px;font-weight:700;
+    }
+    .prompts-sub{font-size:13px;color:var(--text-dim);margin-top:4px;}
+
+    .prompt-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+    .prompt-card{
+      background:var(--surface2);border:1px solid var(--border);
+      border-radius:14px;overflow:hidden;
+    }
+    .pc-head{
+      padding:14px 18px;display:flex;align-items:center;gap:10px;
+      border-bottom:1px solid var(--border);
+    }
+    .pc-icon{
+      width:30px;height:30px;border-radius:8px;
+      display:flex;align-items:center;justify-content:center;font-size:15px;
+    }
+    .pc-name{font-size:13px;font-weight:700;}
+    .pc-body{
+      padding:20px;font-size:12.5px;line-height:1.75;
+      color:var(--text-muted);min-height:200px;white-space:pre-wrap;
+    }
+    .pc-body .ph{
+      background:rgba(255,107,3,.12);color:var(--primary);
+      border-radius:4px;padding:1px 5px;font-weight:600;font-size:11.5px;
+      white-space:nowrap;
+    }
+    .pc-foot{
+      padding:12px 18px;border-top:1px solid var(--border);
+      display:flex;align-items:center;justify-content:space-between;
+    }
+    .pc-foot-note{font-size:11px;color:var(--text-dim);}
+    .copy-btn{
+      padding:6px 16px;background:var(--surface3);border:1px solid var(--border);
+      border-radius:6px;font-size:12px;font-weight:600;color:var(--text-muted);
+      cursor:pointer;transition:all .14s;
+    }
+    .copy-btn:hover{border-color:var(--primary);color:var(--primary);}
+    .copy-btn.done{color:var(--success);border-color:var(--success);}
+
+    /* how to use box */
+    .howto{
+      background:rgba(255,107,3,.05);border:1px solid rgba(255,107,3,.2);
+      border-radius:12px;padding:24px 28px;margin-bottom:32px;
+    }
+    .howto-title{
+      font-family:var(--fd);font-size:14px;font-weight:700;
+      color:var(--primary);margin-bottom:12px;
+    }
+    .howto-steps{display:flex;gap:20px;flex-wrap:wrap;}
+    .howto-step{
+      display:flex;align-items:flex-start;gap:10px;flex:1;min-width:120px;
+    }
+    .step-n{
+      width:24px;height:24px;border-radius:50%;
+      background:var(--primary);color:#fff;
+      font-size:11px;font-weight:700;
+      display:flex;align-items:center;justify-content:center;flex-shrink:0;
+      margin-top:1px;
+    }
+    .step-t{font-size:12.5px;color:var(--text-muted);line-height:1.5;}
+
+
+    /* ── DOWNLOAD KIT ──────────────────────────── */
+    .dl-kit{margin-top:48px;}
+    .dl-grid{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px;
+    }
+    .dl-card{
+      background:var(--surface2);border:1px solid var(--border);
+      border-radius:14px;overflow:hidden;display:flex;flex-direction:column;
+    }
+    .dl-preview{
+      aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;
+      padding:20px;position:relative;
+    }
+    .dl-preview.dark-bg{background:#040407;}
+    .dl-preview.light-bg{background:#FDFCF8;border-bottom:1px solid var(--border);}
+    .dl-preview.orange-bg{background:#FF6B03;}
+    .dl-preview img{max-width:80%;max-height:100%;object-fit:contain;}
+    .dl-info{padding:14px 16px;border-top:1px solid var(--border);}
+    .dl-name{font-size:13px;font-weight:700;color:var(--text);}
+    .dl-meta{font-size:11px;color:var(--text-dim);margin-top:2px;}
+    .dl-btns{display:flex;gap:8px;padding:10px 16px 14px;}
+    .dl-btn{
+      flex:1;padding:7px 0;text-align:center;
+      background:var(--surface3);border:1px solid var(--border2);border-radius:8px;
+      font-size:11px;font-weight:700;color:var(--text-muted);text-decoration:none;
+      transition:all .14s;cursor:pointer;
+    }
+    .dl-btn:hover{background:var(--primary-dim);border-color:var(--primary);color:var(--primary);}
+    .dl-btn.svg{border-color:rgba(255,107,3,.3);color:rgba(255,107,3,.7);}
+    .dl-btn.svg:hover{background:var(--primary-dim);border-color:var(--primary);color:var(--primary);}
+    .dl-btn.png{border-color:var(--border2);color:var(--text-dim);}
+    .dl-btn.png:hover{background:var(--surface3);border-color:var(--border2);color:var(--text-muted);}
+
+    /* ── TEMPLATE STUDIO DOWNLOAD ─────────────── */
+    .tpl-dl-bar{
+      display:flex;gap:10px;margin-top:14px;
+    }
+    .tpl-dl-btn{
+      flex:1;padding:9px 0;text-align:center;
+      background:var(--surface3);border:1px solid var(--border2);border-radius:8px;
+      font-size:12px;font-weight:700;color:var(--text-muted);cursor:pointer;
+      transition:all .14s;
+    }
+    .tpl-dl-btn:hover{border-color:var(--primary);color:var(--primary);background:var(--primary-dim);}
+    .tpl-dl-btn.done{color:var(--success);border-color:var(--success);}
+
+    /* scrollbar */
+    ::-webkit-scrollbar{width:5px;}
+    ::-webkit-scrollbar-track{background:transparent;}
+    ::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px;}
+
+  </style>
+</head>
+<body>
+
+
+<!-- ── SIDEBAR ──────────────────────────────── -->
+<aside class="sidebar">
+  <div class="sb-head">
+    <div class="sb-brand">Community Retail AI</div>
+    <span class="sb-badge">Brandbook v2.0</span>
+  </div>
+  <nav class="sb-nav">
+    <div class="nav-section">
+      <div class="nav-section-title">Identità</div>
+      <a class="nav-a active" href="#brand"><span class="nav-pip"></span>Brand Overview</a>
+      <a class="nav-a" href="#logo"><span class="nav-pip"></span>Logo</a>
+      <a class="nav-a" href="#colors"><span class="nav-pip"></span>Colori</a>
+      <a class="nav-a" href="#typography"><span class="nav-pip"></span>Tipografia</a>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-title">Comunicazione</div>
+      <a class="nav-a" href="#voice"><span class="nav-pip"></span>Tono di Voce</a>
+      <a class="nav-a" href="#social"><span class="nav-pip"></span>Social Guidelines</a>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-title">Tool</div>
+      <a class="nav-a" href="#studio"><span class="nav-pip"></span>🎨 Template Studio</a>
+    </div>
+  </nav>
+  <div class="sb-foot">v2.0 · Maggio 2026<br>Websonica Srl · Padova</div>
+</aside>
+
+<!-- ── MAIN ─────────────────────────────────── -->
+<main class="main">
+
+<!-- ── 01 BRAND OVERVIEW ────────────────────── -->
+<section id="brand" class="sec sec-alt" style="padding:100px 72px;">
+  <div class="hero-kicker">// Brandbook · Community Retail AI</div>
+  <h1 class="hero-h1">Il brand che fa<br><em>agire</em> il retail.</h1>
+  <p class="hero-p">
+    Community Retail AI non è un'altra dashboard. È un sistema che trasforma dati in azioni quotidiane misurate. Questo brandbook definisce come comunicare questa promessa — in modo coerente, diretto e riconoscibile — su ogni canale.
+  </p>
+  <div class="hero-pills">
+    <span class="hero-pill orange">#FF6B03 · Brand Orange</span>
+    <span class="hero-pill">Space Grotesk + Plus Jakarta Sans</span>
+    <span class="hero-pill">LinkedIn · Instagram · Facebook · TikTok</span>
+    <span class="hero-pill">B2B · Retail Italiano</span>
+  </div>
+</section>
+
+<!-- ── 02 LOGO ───────────────────────────────── -->
+<section id="logo" class="sec">
+  <div class="slabel">// 02 · Logo</div>
+  <h2 class="stitle">Il simbolo della<br><em>comunità</em>.</h2>
+  <p class="sdesc">
+    L'icona è un sistema di punti che ruotano attorno a un centro — ogni punto è un cliente, ogni raggi una connessione. Sempre in arancione #FF6B03. Il testo usa lo stesso peso del brand: deciso, senza grazie.
+  </p>
+
+  <h3 class="ssub">Versione principale — orizzontale</h3>
+  <div class="logo-variants">
+    <div class="logo-card v-dark">
+      <span class="logo-card-label">Sfondo scuro · uso principale</span>
+      <img src="logo-horizontal-white.svg" alt="Logo su sfondo scuro">
+    </div>
+    <div class="logo-card v-light">
+      <span class="logo-card-label">Sfondo chiaro</span>
+      <img src="logo-horizontal-dark.svg" alt="Logo su sfondo chiaro">
+    </div>
+    <div class="logo-card v-orange">
+      <span class="logo-card-label">Sfondo arancione</span>
+      <img src="logo-horizontal.svg" alt="Logo su arancione" style="filter:brightness(0) invert(1);">
+    </div>
+    <div class="logo-card v-warm">
+      <span class="logo-card-label">Sfondo warm gray</span>
+      <img src="logo-horizontal-dark.svg" alt="Logo su warm gray">
+    </div>
+  </div>
+
+  <h3 class="ssub">Versione compatta</h3>
+  <div class="logo-compact-row">
+    <div class="logo-compact-card v-dark">
+      <span class="logo-card-label" style="color:rgba(253,252,248,.35)">Sfondo scuro</span>
+      <img src="logo-compact-white.svg" alt="Logo compatto dark">
+    </div>
+    <div class="logo-compact-card v-light">
+      <span class="logo-card-label" style="color:rgba(4,4,7,.35)">Sfondo chiaro</span>
+      <img src="logo-compact-dark.svg" alt="Logo compatto light">
+    </div>
+    <div class="logo-compact-card v-orange">
+      <span class="logo-card-label" style="color:rgba(4,4,7,.35)">Sfondo arancione</span>
+      <img src="logo-compact.svg" alt="Logo compatto orange" style="filter:brightness(0) invert(1);">
+    </div>
+  </div>
+
+  <h3 class="ssub">Pittogramma</h3>
+  <p style="font-size:14px;color:var(--text-muted);margin-bottom:20px;">Il simbolo grafico isolato dal logotipo. Usa solo dove il brand è già riconoscibile nel contesto.</p>
+  <div class="pitto-dl">
+    <div class="logo-icons-row">
+      <div class="logo-icon-card v-dark">
+        <img src="logo-icon-white.svg" alt="Pittogramma bianco">
+        <span class="logo-icon-lbl">Su scuro</span>
+      </div>
+      <div class="logo-icon-card v-light">
+        <img src="logo-icon-dark.svg" alt="Pittogramma scuro">
+        <span class="logo-icon-lbl">Su chiaro</span>
+      </div>
+      <div class="logo-icon-card v-orange">
+        <img src="logo-icon-white.svg" alt="Pittogramma bianco su arancione">
+        <span class="logo-icon-lbl">Su arancione</span>
+      </div>
+      <div class="logo-icon-card v-dark" style="background:var(--surface2);">
+        <img src="logo-icon.svg" alt="Pittogramma colore">
+        <span class="logo-icon-lbl">Colore brand</span>
+      </div>
+    </div>
+    <div class="pitto-dl-row">
+      <a class="pitto-dl-btn svg-btn" href="logo-icon.svg" download="CommunityRetailAI-icon.svg">SVG colore</a>
+      <a class="pitto-dl-btn svg-btn" href="logo-icon-white.svg" download="CommunityRetailAI-icon-white.svg">SVG bianco</a>
+      <a class="pitto-dl-btn svg-btn" href="logo-icon-dark.svg" download="CommunityRetailAI-icon-dark.svg">SVG scuro</a>
+      <a class="pitto-dl-btn" href="logo-icon.png" download="CommunityRetailAI-icon.png">PNG colore</a>
+      <a class="pitto-dl-btn" href="logo-icon-white.png" download="CommunityRetailAI-icon-white.png">PNG bianco</a>
+      <a class="pitto-dl-btn" href="logo-icon-dark.png" download="CommunityRetailAI-icon-dark.png">PNG scuro</a>
+    </div>
+  </div>
+
+  <hr class="div">
+  <h3 class="ssub">Spazio minimo di rispetto</h3>
+  <p style="font-size:14px;color:var(--text-muted);margin-bottom:24px;">
+    Attorno al logo mantenere sempre uno spazio libero pari all'altezza della lettera "C" del logotipo. Dimensione minima: 32px di altezza su digital, 8mm su stampa.
+  </p>
+  <div style="display:inline-flex;align-items:center;justify-content:center;background:var(--surface2);border:1px dashed var(--border2);border-radius:14px;padding:48px;">
+    <div style="position:relative;">
+      <div style="position:absolute;inset:-20px;border:1px dashed rgba(255,107,3,.3);border-radius:4px;"></div>
+      <img src="logo-compact-white.svg" style="height:52px;width:auto;display:block;">
+    </div>
+  </div>
+  <p style="font-size:12px;color:var(--text-dim);margin-top:10px;">La zona arancione tratteggiata è lo spazio minimo di rispetto.</p>
+
+  <hr class="div" style="margin-top:48px;">
+  <div class="dl-kit">
+    <h3 class="ssub">Download Kit</h3>
+    <p style="font-size:14px;color:var(--text-muted);margin-top:8px;margin-bottom:0;">Scarica i file SVG originali. Usa sempre la versione corretta per il contesto.</p>
+    <div class="dl-grid">
+
+      <div class="dl-card">
+        <div class="dl-preview dark-bg">
+          <img src="logo-horizontal-white.svg" alt="Logo orizzontale · sfondo scuro">
+        </div>
+        <div class="dl-info">
+          <div class="dl-name">Orizzontale — bianco</div>
+          <div class="dl-meta">Su sfondi scuri e arancione · 2160×600</div>
+        </div>
+        <div class="dl-btns">
+          <a class="dl-btn svg" href="logo-horizontal-white.svg" download="CommunityRetailAI-logo-horizontal-white.svg">SVG</a>
+          <a class="dl-btn png" href="logo-horizontal-white.png" download="CommunityRetailAI-logo-horizontal-white.png">PNG</a>
+        </div>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-preview light-bg">
+          <img src="logo-horizontal-dark.svg" alt="Logo orizzontale · sfondo chiaro">
+        </div>
+        <div class="dl-info">
+          <div class="dl-name">Orizzontale — scuro</div>
+          <div class="dl-meta">Su sfondi chiari e warm gray · 2160×600</div>
+        </div>
+        <div class="dl-btns">
+          <a class="dl-btn svg" href="logo-horizontal-dark.svg" download="CommunityRetailAI-logo-horizontal-dark.svg">SVG</a>
+          <a class="dl-btn png" href="logo-horizontal-dark.png" download="CommunityRetailAI-logo-horizontal-dark.png">PNG</a>
+        </div>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-preview orange-bg">
+          <img src="logo-horizontal-white.svg" alt="Logo orizzontale · sfondo arancione" style="filter:brightness(0) invert(1);">
+        </div>
+        <div class="dl-info">
+          <div class="dl-name">Orizzontale — su arancione</div>
+          <div class="dl-meta">Versione bianca su #FF6B03 · 2160×600</div>
+        </div>
+        <div class="dl-btns">
+          <a class="dl-btn svg" href="logo-horizontal-white.svg" download="CommunityRetailAI-logo-horiz-orange.svg">SVG</a>
+          <a class="dl-btn png" href="logo-horizontal-white.png" download="CommunityRetailAI-logo-horiz-orange.png">PNG</a>
+        </div>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-preview dark-bg">
+          <img src="logo-compact-white.svg" alt="Logo compatto · sfondo scuro" style="max-width:55%;">
+        </div>
+        <div class="dl-info">
+          <div class="dl-name">Compatto — bianco</div>
+          <div class="dl-meta">Spazi ridotti, social, favicon · 1366×600</div>
+        </div>
+        <div class="dl-btns">
+          <a class="dl-btn svg" href="logo-compact-white.svg" download="CommunityRetailAI-logo-compact-white.svg">SVG</a>
+          <a class="dl-btn png" href="logo-compact-white.png" download="CommunityRetailAI-logo-compact-white.png">PNG</a>
+        </div>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-preview light-bg">
+          <img src="logo-compact-dark.svg" alt="Logo compatto · sfondo chiaro" style="max-width:55%;">
+        </div>
+        <div class="dl-info">
+          <div class="dl-name">Compatto — scuro</div>
+          <div class="dl-meta">Spazi ridotti, su sfondi chiari · 1366×600</div>
+        </div>
+        <div class="dl-btns">
+          <a class="dl-btn svg" href="logo-compact-dark.svg" download="CommunityRetailAI-logo-compact-dark.svg">SVG</a>
+          <a class="dl-btn png" href="logo-compact-dark.png" download="CommunityRetailAI-logo-compact-dark.png">PNG</a>
+        </div>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-preview dark-bg" style="background:#111117;">
+          <img src="logo-horizontal.svg" alt="Logo originale colori">
+        </div>
+        <div class="dl-info">
+          <div class="dl-name">Originale · colori brand</div>
+          <div class="dl-meta">File master con icona arancione · 2160×600</div>
+        </div>
+        <div class="dl-btns">
+          <a class="dl-btn svg" href="logo-horizontal.svg" download="CommunityRetailAI-logo-master.svg">SVG</a>
+          <a class="dl-btn png" href="logo-horizontal.png" download="CommunityRetailAI-logo-master.png">PNG</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<!-- ── 03 COLORS ─────────────────────────────── -->
+<section id="colors" class="sec sec-alt">
+  <div class="slabel">// 03 · Colori</div>
+  <h2 class="stitle">Una palette<br><em>senza compromessi</em>.</h2>
+  <p class="sdesc">
+    L'arancione è il motore visivo del brand — energia, urgenza, risultati. Il quasi-nero comunica profondità e autorevolezza. L'off-white è il bianco caldo che usiamo su tutto: mai bianco puro #FFFFFF.
+  </p>
+
+  <div class="color-grid">
+    <div class="color-card">
+      <div class="color-swatch" style="background:#FF6B03;"></div>
+      <div class="color-info">
+        <div class="color-name">Brand Orange</div>
+        <div class="color-hex">#FF6B03</div>
+        <div class="color-role">Primario · CTA · Accenti · Logo icona · Highlights numerici</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#040407;"></div>
+      <div class="color-info">
+        <div class="color-name">Brand Dark</div>
+        <div class="color-hex">#040407</div>
+        <div class="color-role">Background principale · Testo su light · Versione logo scuro</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#FDFCF8;border-top:1px solid #e0ded8;"></div>
+      <div class="color-info">
+        <div class="color-name">Off White</div>
+        <div class="color-hex">#FDFCF8</div>
+        <div class="color-role">Testo su dark · Background light principale · Logo su dark</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#F7F5F0;border-top:1px solid #e0ded8;"></div>
+      <div class="color-info">
+        <div class="color-name">Warm Gray</div>
+        <div class="color-hex">#F7F5F0</div>
+        <div class="color-role">Background light secondario · Card warm · Sfondi neutri</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#FF8C3A;"></div>
+      <div class="color-info">
+        <div class="color-name">Orange Light</div>
+        <div class="color-hex">#FF8C3A</div>
+        <div class="color-role">Hover · Gradiente · Variante energica in contesti caldi</div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="ssub">Combinazioni approvate</h3>
+  <div class="combos">
+    <div class="combo" style="background:#040407;border-color:#222230;">
+      <div class="combo-tag" style="color:rgba(253,252,248,.4)">Dark · uso principale</div>
+      <div class="combo-n" style="color:#FF6B03;">€ 1,86M</div>
+      <div class="combo-l" style="color:#FDFCF8;">fatturato recuperato in 5 mesi</div>
+      <div style="margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,.08);">
+        <div style="font-size:11px;color:rgba(253,252,248,.35);">Background #040407 · Numero #FF6B03 · Testo #FDFCF8</div>
+      </div>
+    </div>
+    <div class="combo" style="background:#FDFCF8;border-color:#e0ded8;">
+      <div class="combo-tag" style="color:rgba(4,4,7,.4)">Light · alternativa</div>
+      <div class="combo-n" style="color:#040407;">13.580</div>
+      <div class="combo-l" style="color:#040407;">clienti tornati in negozio</div>
+      <div style="margin-top:20px;padding-top:16px;border-top:1px solid rgba(4,4,7,.1);">
+        <div style="font-size:11px;color:rgba(4,4,7,.4);">Background #FDFCF8 · Numero #040407 · Label #040407</div>
+      </div>
+    </div>
+    <div class="combo" style="background:#FF6B03;border-color:#FF8C3A;">
+      <div class="combo-tag" style="color:rgba(4,4,7,.5)">Orange · CTA · Annunci</div>
+      <div class="combo-n" style="color:#040407;">50%</div>
+      <div class="combo-l" style="color:#040407;">recall rate medio sui contattati</div>
+      <div style="margin-top:20px;padding-top:16px;border-top:1px solid rgba(4,4,7,.15);">
+        <div style="font-size:11px;color:rgba(4,4,7,.45);">Background #FF6B03 · Numero #040407 · Label #040407</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 04 TYPOGRAPHY ──────────────────────────── -->
+<section id="typography" class="sec">
+  <div class="slabel">// 04 · Tipografia</div>
+  <h2 class="stitle">Parole che<br><em>atterrano</em>.</h2>
+  <p class="sdesc">
+    Space Grotesk per titoli, numeri e display — geometrico, moderno, leggibile a qualsiasi dimensione. Plus Jakarta Sans per body, UI e testi lunghi — caldo, leggibile, contemporaneo. Mai altri font senza approvazione.
+  </p>
+
+  <div class="type-font-showcase">
+    <div class="type-font-half">
+      <div class="type-font-kicker">Display · Titoli · Numeri</div>
+      <div class="type-font-big" style="font-family:'Space Grotesk';">Il retail<br>agisce.</div>
+      <div class="type-font-alpha" style="font-family:'Space Grotesk';font-weight:400;">
+        AaBbCcDdEeFf<br>GgHhIiJjKkLl<br>0123456789
+      </div>
+      <div class="type-font-name">Space Grotesk</div>
+      <div class="type-font-weights">
+        <span class="type-w-chip" style="font-family:'Space Grotesk';font-weight:300;">Light 300</span>
+        <span class="type-w-chip" style="font-family:'Space Grotesk';font-weight:400;">Regular 400</span>
+        <span class="type-w-chip" style="font-family:'Space Grotesk';font-weight:500;">Medium 500</span>
+        <span class="type-w-chip" style="font-family:'Space Grotesk';font-weight:600;">Semi 600</span>
+        <span class="type-w-chip" style="font-family:'Space Grotesk';font-weight:700;">Bold 700</span>
+      </div>
+    </div>
+    <div class="type-font-half">
+      <div class="type-font-kicker">Body · UI · Testo lungo</div>
+      <div class="type-font-big" style="font-family:'Plus Jakarta Sans';">Dati che<br>generano.</div>
+      <div class="type-font-alpha" style="font-family:'Plus Jakarta Sans';font-weight:400;">
+        AaBbCcDdEeFf<br>GgHhIiJjKkLl<br>0123456789
+      </div>
+      <div class="type-font-name">Plus Jakarta Sans</div>
+      <div class="type-font-weights">
+        <span class="type-w-chip" style="font-family:'Plus Jakarta Sans';font-weight:300;">Light 300</span>
+        <span class="type-w-chip" style="font-family:'Plus Jakarta Sans';font-weight:400;">Regular 400</span>
+        <span class="type-w-chip" style="font-family:'Plus Jakarta Sans';font-weight:600;">Semi 600</span>
+        <span class="type-w-chip" style="font-family:'Plus Jakarta Sans';font-weight:700;">Bold 700</span>
+        <span class="type-w-chip" style="font-family:'Plus Jakarta Sans';font-weight:800;">Extra 800</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="type-specimen">
+    <div class="type-specimen-title">Scala tipografica</div>
+    <div class="type-row">
+      <div>
+        <div class="type-meta-name">Headline / H1</div>
+        <div class="type-meta-spec">Space Grotesk 700<br>60px · –3% tracking<br>line-height 1.0</div>
+      </div>
+      <div class="t-h1">Il retail agisce.</div>
+    </div>
+    <div class="type-row">
+      <div>
+        <div class="type-meta-name">Display / H2</div>
+        <div class="type-meta-spec">Space Grotesk 700<br>40px · –2% tracking</div>
+      </div>
+      <div class="t-h2">Dati che generano fatturato.</div>
+    </div>
+    <div class="type-row">
+      <div>
+        <div class="type-meta-name">Titolo / H3</div>
+        <div class="type-meta-spec">Space Grotesk 600<br>28px · –1% tracking</div>
+      </div>
+      <div class="t-h3">Action Center quotidiano</div>
+    </div>
+    <div class="type-row">
+      <div>
+        <div class="type-meta-name">Sottotitolo / H4</div>
+        <div class="type-meta-spec">Space Grotesk 600<br>20px</div>
+      </div>
+      <div class="t-h4">Segmentazione RFM · Churn Prediction</div>
+    </div>
+    <div class="type-row">
+      <div>
+        <div class="type-meta-name">Body Large</div>
+        <div class="type-meta-spec">Plus Jakarta Sans 400<br>17px · 1.8 leading</div>
+      </div>
+      <div class="t-bl">Il retail italiano ha più strumenti che mai — e meno azioni concrete che mai.</div>
+    </div>
+    <div class="type-row">
+      <div>
+        <div class="type-meta-name">Body</div>
+        <div class="type-meta-spec">Plus Jakarta Sans 400<br>15px · 1.75 leading</div>
+      </div>
+      <div class="t-b">Setup medio circa 2 settimane per avere i dati in produzione. Primi insight azionabili entro 6–8 settimane dal via.</div>
+    </div>
+    <div class="type-row">
+      <div>
+        <div class="type-meta-name">Caption / Label</div>
+        <div class="type-meta-spec">Plus Jakarta Sans 500<br>12px · +2% tracking</div>
+      </div>
+      <div class="t-cap">Dati aggiornati aprile 2026 · rete retail abbigliamento · 12 punti vendita · Triveneto</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 05 VOICE ──────────────────────────────── -->
+<section id="voice" class="sec sec-alt">
+  <div class="slabel">// 05 · Tono di Voce</div>
+  <h2 class="stitle">Diretto.<br>Misurato. <em>Italiano.</em></h2>
+  <p class="sdesc">
+    Parliamo come un retail manager che sa cosa funziona. Niente gergo anglofono inutile. Ogni affermazione che facciamo è verificabile con una query SQL. La retorica vuota non è nel nostro DNA.
+  </p>
+
+  <div class="voice-grid">
+    <div class="voice-card">
+      <div class="voice-icon">📊</div>
+      <div class="voice-title">Data-driven, sempre</div>
+      <div class="voice-text">Ogni claim ha un numero dietro. Non "risultati eccezionali" — ma "€ 1,86M di fatturato attribuito in 5 mesi, query SQL verificabile". I numeri parlano da soli, noi non ci aggiungiamo aggettivi.</div>
+    </div>
+    <div class="voice-card">
+      <div class="voice-icon">🎯</div>
+      <div class="voice-title">Diretto, senza fronzoli</div>
+      <div class="voice-text">Andiamo al punto. Frase breve, poi la prova. Zero "leveraging synergies" o "AI-powered ecosystem". Il retail manager ha poco tempo e nessuna pazienza per il marketing-speak.</div>
+    </div>
+    <div class="voice-card">
+      <div class="voice-icon">🇮🇹</div>
+      <div class="voice-title">Italiano nel midollo</div>
+      <div class="voice-text">Parliamo la lingua del retail italiano — Veneto, fashion, multi-store. Conosciamo la differenza tra un gestionale italiano e un CRM americano. E lo facciamo sentire in ogni comunicazione.</div>
+    </div>
+    <div class="voice-card">
+      <div class="voice-icon">⚡</div>
+      <div class="voice-title">Urgenza dai dati</div>
+      <div class="voice-text">Il cliente inattivo è fatturato perso ogni giorno. Lo diciamo — ma con numeri, non con allarmismo. La nostra urgenza nasce dalle metriche, non dal tone-of-voice del marketing tradizionale.</div>
+    </div>
+  </div>
+
+  <div class="dodonts">
+    <div class="do-box">
+      <div class="do-h">✓ Scrivi così</div>
+      <div class="ex">In 5 mesi: 13.580 clienti tornati in negozio. 50% recall rate. Query SQL verificabile.</div>
+      <div class="ex">Il cliente non è un numero. È qualcuno che compra tre volte in tre canali e tu non lo riconosci.</div>
+      <div class="ex">Ogni mattina sai chi richiamare, con quale offerta, e quanto vale. Non un'altra analytics.</div>
+      <div class="ex">Non vendiamo licenze. Vendiamo un cambio di metodo. Setup, formazione, monitoring inclusi.</div>
+      <div class="ex">Dashboard ne avete abbastanza. È ora di agire.</div>
+    </div>
+    <div class="dont-box">
+      <div class="dont-h">✗ Non scrivere mai</div>
+      <div class="ex">Soluzione innovativa che trasforma il tuo business retail.</div>
+      <div class="ex">Leveraging AI-powered synergies per ottimizzare il customer journey omnichannel.</div>
+      <div class="ex">Risultati eccezionali garantiti per ogni retailer con la nostra piattaforma best-in-class.</div>
+      <div class="ex">Il tool definitivo per il retail 4.0 dell'era digitale.</div>
+      <div class="ex">Scalabilità e flessibilità per il tuo ecosystem di business. Game-changer.</div>
+    </div>
+  </div>
+
+  <h3 class="ssub">Hashtag ufficiali</h3>
+  <div class="hashtags">
+    <span class="hashtag">#CommunityRetailAI</span>
+    <span class="hashtag">#RetailItaliano</span>
+    <span class="hashtag">#ActionCenter</span>
+    <span class="hashtag">#RetailData</span>
+    <span class="hashtag">#CDP</span>
+    <span class="hashtag">#FashionRetail</span>
+    <span class="hashtag">#StoreManager</span>
+    <span class="hashtag">#RetailAI</span>
+    <span class="hashtag">#CustomerData</span>
+    <span class="hashtag">#UnifiedCommerce</span>
+    <span class="hashtag">#RetailMarketing</span>
+    <span class="hashtag">#AIRetail</span>
+  </div>
+</section>
+
+<!-- ── 06 SOCIAL GUIDELINES ───────────────────── -->
+<section id="social" class="sec">
+  <div class="slabel">// 06 · Social Media Guidelines</div>
+  <h2 class="stitle">Ogni piattaforma,<br><em>la stessa voce</em>.</h2>
+  <p class="sdesc">
+    Il tono è sempre quello del brand — diretto, verificabile, italiano. Il formato si adatta. LinkedIn parla al C-level con dati, Instagram mostra impatto visivo, Facebook costruisce community, TikTok semplifica il complesso in 30 secondi.
+  </p>
+
+  <div class="ptabs" id="social-tabs">
+    <div class="ptab on" onclick="switchSocialTab('li')">LinkedIn</div>
+    <div class="ptab" onclick="switchSocialTab('ig')">Instagram</div>
+    <div class="ptab" onclick="switchSocialTab('fb')">Facebook</div>
+    <div class="ptab" onclick="switchSocialTab('tk')">TikTok</div>
+  </div>
+
+  <div class="ppanel on" id="panel-li">
+    <div class="pspecs">
+      <div class="pspec"><div class="pspec-l">Tono</div><div class="pspec-v">B2B · Autorevole · Data-first</div></div>
+      <div class="pspec"><div class="pspec-l">Frequenza</div><div class="pspec-v">3–4× / settimana</div></div>
+      <div class="pspec"><div class="pspec-l">Formato</div><div class="pspec-v">1200×627 · 1:1 · Carosello</div></div>
+      <div class="pspec"><div class="pspec-l">Testo</div><div class="pspec-v">150–300 car. ideale</div></div>
+    </div>
+    <div class="pgrid">
+      <div class="pcard"><div class="pcard-t">Contenuti che funzionano</div><div class="pcard-b">Post con un dato reale (numero + fonte), mini case study in 3–5 punti, insight operativi del retail, annunci feature con impatto numerico misurato.</div><div class="pills"><span class="pill o">KPI reali</span><span class="pill o">Case study</span><span class="pill">Thought leadership</span><span class="pill">Feature launch</span></div></div>
+      <div class="pcard"><div class="pcard-t">Struttura del post vincente</div><div class="pcard-b"><strong style="color:var(--text);">Hook:</strong> numero o affermazione controintuitiva.<br><strong style="color:var(--text);">Contesto:</strong> 2 righe di setup (rete pilot, dove, quando).<br><strong style="color:var(--text);">Dato:</strong> il numero verificabile in evidenza.<br><strong style="color:var(--text);">CTA:</strong> link o domanda alla community.</div></div>
+    </div>
+  </div>
+
+  <div class="ppanel" id="panel-ig">
+    <div class="pspecs">
+      <div class="pspec"><div class="pspec-l">Tono</div><div class="pspec-v">Visivo · Impatto · Ispirazionale</div></div>
+      <div class="pspec"><div class="pspec-l">Frequenza</div><div class="pspec-v">4–5× / settimana</div></div>
+      <div class="pspec"><div class="pspec-l">Formato</div><div class="pspec-v">1080×1080 · 1080×1350 · Stories 9:16</div></div>
+      <div class="pspec"><div class="pspec-l">Caption</div><div class="pspec-v">Hook 125 char + espansione</div></div>
+    </div>
+    <div class="pgrid">
+      <div class="pcard"><div class="pcard-t">Contenuti che funzionano</div><div class="pcard-b">1 numero enorme su sfondo scuro, citazioni di retail manager reali (anonimizzate), risultati KPI card, caroselli educativi "lo sapevi che...", before/after retail.</div><div class="pills"><span class="pill o">KPI card</span><span class="pill o">Quote</span><span class="pill">Caroselli</span><span class="pill">Reels 15-30s</span></div></div>
+      <div class="pcard"><div class="pcard-t">Visual guidelines</div><div class="pcard-b">Sfondo sempre scuro <em style="color:var(--text);">#040407</em> o arancione <em style="color:var(--text);">#FF6B03</em>. Testo bianco o dark. Logo sempre presente in basso a destra. Max 2 dati per immagine. Space Grotesk per numeri.</div></div>
+    </div>
+  </div>
+
+  <div class="ppanel" id="panel-fb">
+    <div class="pspecs">
+      <div class="pspec"><div class="pspec-l">Tono</div><div class="pspec-v">Community · Educativo · Warm</div></div>
+      <div class="pspec"><div class="pspec-l">Frequenza</div><div class="pspec-v">2–3× / settimana</div></div>
+      <div class="pspec"><div class="pspec-l">Formato</div><div class="pspec-v">1200×630 · 1:1</div></div>
+      <div class="pspec"><div class="pspec-l">Testo</div><div class="pspec-v">Storytelling più lungo</div></div>
+    </div>
+    <div class="pgrid">
+      <div class="pcard"><div class="pcard-t">Contenuti che funzionano</div><div class="pcard-b">Blog condivisi con snippet di valore, storie anonimizzate di retail manager, post educativi con dati, annunci evento/demo, domande aperte per engagement organico.</div><div class="pills"><span class="pill o">Blog sharing</span><span class="pill o">Storie reali</span><span class="pill">Domande</span><span class="pill">Video brevi</span></div></div>
+      <div class="pcard"><div class="pcard-t">Struttura efficace</div><div class="pcard-b">Inizia con un paradosso o domanda reale ("Hai 87k clienti e non parli con nessuno?"). Poi la storia. I dati in mezzo. La domanda alla community alla fine per generare commenti.</div></div>
+    </div>
+  </div>
+
+  <div class="ppanel" id="panel-tk">
+    <div class="pspecs">
+      <div class="pspec"><div class="pspec-l">Tono</div><div class="pspec-v">Veloce · Sorprendente · Diretto</div></div>
+      <div class="pspec"><div class="pspec-l">Frequenza</div><div class="pspec-v">2–4× / settimana</div></div>
+      <div class="pspec"><div class="pspec-l">Formato</div><div class="pspec-v">1080×1920 · 9:16 · 30–60 sec</div></div>
+      <div class="pspec"><div class="pspec-l">Hook</div><div class="pspec-v">Primo frame = dato o domanda forte</div></div>
+    </div>
+    <div class="pgrid">
+      <div class="pcard"><div class="pcard-t">Contenuti che funzionano</div><div class="pcard-b">"Sapevi che..." con dato sconvolgente, "Come funziona X in 60 secondi", POV dello Store Manager, confronto prima/dopo con dati reali, risposta a domande comuni del retail italiano.</div><div class="pills"><span class="pill o">Sapevi che...</span><span class="pill o">Tutorial veloce</span><span class="pill">POV</span><span class="pill">Trend sound</span></div></div>
+      <div class="pcard"><div class="pcard-t">Regole video</div><div class="pcard-b">Sottotitoli <strong style="color:var(--text);">sempre attivi</strong>. Logo in alto a sinistra (la destra TikTok la usa per i CTA). Colori brand visibili nei primi 2 secondi. Fine con CTA verbale chiara, senza "metti mi piace".</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 07 TEMPLATE STUDIO ──────────────────────── -->
+<section id="studio" class="sec sec-alt" style="border-bottom:none;">
+  <div class="slabel">// 07 · Template Studio</div>
+  <h2 class="stitle">Scegli il template.<br><em>Copia il prompt.</em></h2>
+  <p class="sdesc">
+    8 template pronti per i social. Ogni template ha i suoi prompt già scritti per <strong style="color:var(--text);">Claude</strong> e <strong style="color:var(--text);">Gemini</strong>. Scegli il visual, sostituisci i <span style="background:rgba(255,107,3,.12);color:var(--primary);padding:1px 6px;border-radius:4px;font-size:14px;font-weight:600;">[DATI]</span> con le tue informazioni reali, e incolla nell'AI.
+  </p>
+
+  <div class="howto">
+    <div class="howto-title">Come usare il Template Studio</div>
+    <div class="howto-steps">
+      <div class="howto-step"><div class="step-n">1</div><div class="step-t">Scegli il template dalla galleria</div></div>
+      <div class="howto-step"><div class="step-n">2</div><div class="step-t">Seleziona la piattaforma (LinkedIn, Instagram…)</div></div>
+      <div class="howto-step"><div class="step-n">3</div><div class="step-t">Copia il prompt Claude o Gemini</div></div>
+      <div class="howto-step"><div class="step-n">4</div><div class="step-t">Sostituisci i <span style="color:var(--primary);font-weight:700;">[PLACEHOLDER]</span> con i tuoi dati</div></div>
+    </div>
+  </div>
+
+
+  <!-- TEMPLATE GALLERY "IN VISTA" -->
+  <div class="tpl-gallery">
+    <div class="tpl-gallery-title">8 template disponibili</div>
+    <div class="tpl-gallery-sub">Layout statici — seleziona un template nell'editor per personalizzarlo</div>
+    <div class="tpl-gallery-grid">
+      <div class="tpl-gallery-item">
+        <img src="tpl-preview-light-hero.png" alt="Chiaro Hero">
+        <div class="tpl-gallery-lbl">Chiaro · Hero</div>
+      </div>
+      <div class="tpl-gallery-item">
+        <img src="tpl-preview-dark-card.png" alt="Scuro + Card">
+        <div class="tpl-gallery-lbl">Scuro · Card</div>
+      </div>
+      <div class="tpl-gallery-item">
+        <img src="tpl-preview-dark-glow.png" alt="Scuro Glow">
+        <div class="tpl-gallery-lbl">Scuro · Glow</div>
+      </div>
+      <div class="tpl-gallery-item">
+        <img src="tpl-preview-img-title.png" alt="Immagine + Titolo">
+        <div class="tpl-gallery-lbl">Immagine · Titolo</div>
+      </div>
+      <div class="tpl-gallery-item">
+        <img src="tpl-preview-img-card.png" alt="Immagine + Card">
+        <div class="tpl-gallery-lbl">Immagine · Card</div>
+      </div>
+      <div class="tpl-gallery-item">
+        <img src="tpl-preview-orange-bold.png" alt="Arancione Bold">
+        <div class="tpl-gallery-lbl">Arancione · Bold</div>
+      </div>
+      <div class="tpl-gallery-item">
+        <img src="tpl-preview-dark-clean.png" alt="Scuro Clean">
+        <div class="tpl-gallery-lbl">Scuro · Clean</div>
+      </div>
+      <div class="tpl-gallery-item">
+        <img src="tpl-preview-split.png" alt="Split">
+        <div class="tpl-gallery-lbl">Split</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="studio-wrap">
+    <!-- LEFT -->
+    <div class="studio-left">
+      <div class="stabs">
+        <button class="stab on" onclick="stPlatform('linkedin',this)">LinkedIn</button>
+        <button class="stab" onclick="stPlatform('instagram',this)">Instagram</button>
+        <button class="stab" onclick="stPlatform('facebook',this)">Facebook</button>
+        <button class="stab" onclick="stPlatform('tiktok',this)">TikTok</button>
+      </div>
+      <div class="tpl-thumbs" id="tpl-thumbs"></div>
+      <div class="canvas-wrap">
+        <div class="canvas-inner" id="canvas-inner"></div>
+      </div>
+      <div class="tpl-dl-bar">
+        <button class="tpl-dl-btn" onclick="downloadTplPNG(this)">↓ Scarica PNG</button>
+        <button class="tpl-dl-btn" onclick="downloadTplSVG(this)">↓ Scarica SVG</button>
+      </div>
+
+      <div class="upload-z">
+        <input type="file" accept="image/*" onchange="handleUpload(event)">
+        <div class="upload-z-t">📁 Carica visual personalizzato</div>
+        <div class="upload-z-s">PNG · JPG · WebP — sovrascrive il template</div>
+      </div>
+
+      <!-- PROMPTS -->
+      <div class="prompts-area">
+        <div class="prompts-header">
+          <div>
+            <div class="prompts-title">Prompt pronti all'uso</div>
+            <div class="prompts-sub">Sostituisci i <span style="color:var(--primary);">[PLACEHOLDER]</span> arancioni con i tuoi dati reali</div>
+          </div>
+        </div>
+        <div class="prompt-grid" id="prompt-grid"></div>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="ctrls">
+      <div class="ctrl">
+        <div class="ctrl-l">Tipo di template</div>
+        <div class="radios" id="ctrl-tpl-type">
+          <div class="radio on"  data-tpl="light-hero"   onclick="selectTplType(this)">Chiaro · Hero</div>
+          <div class="radio"     data-tpl="dark-card"    onclick="selectTplType(this)">Scuro · Card</div>
+          <div class="radio"     data-tpl="dark-glow"    onclick="selectTplType(this)">Scuro · Glow</div>
+          <div class="radio"     data-tpl="img-title"    onclick="selectTplType(this)">Immagine · Titolo</div>
+          <div class="radio"     data-tpl="img-card"     onclick="selectTplType(this)">Immagine · Card</div>
+          <div class="radio"     data-tpl="orange-bold"  onclick="selectTplType(this)">Arancione · Bold</div>
+          <div class="radio"     data-tpl="dark-clean"   onclick="selectTplType(this)">Scuro · Clean</div>
+          <div class="radio"     data-tpl="split"        onclick="selectTplType(this)">Split · Due metà</div>
+        </div>
+      </div>
+
+      <div class="ctrl">
+        <div class="ctrl-l">Posizione logo</div>
+        <div class="pos-grid">
+          <div class="pos-btn" onclick="setPos('tl',this)" title="↖ Alto sinistra">↖</div>
+          <div class="pos-btn on" onclick="setPos('tr',this)" title="↗ Alto destra">↗</div>
+          <div class="pos-btn" onclick="setPos('bl',this)" title="↙ Basso sinistra">↙</div>
+          <div class="pos-btn" onclick="setPos('br',this)" title="↘ Basso destra">↘</div>
+        </div>
+      </div>
+
+      <div class="ctrl">
+        <div class="tog-row">
+          <span class="tog-l">Mostra logo nel template</span>
+          <div class="tog on" id="logo-tog" onclick="toggleLogo(this)"></div>
+        </div>
+      </div>
+
+      <!-- info box sul template selezionato -->
+      <div class="ctrl" id="tpl-info-box" style="background:var(--surface3);border-color:var(--border2);">
+        <div class="ctrl-l">Uso consigliato</div>
+        <div id="tpl-info-text" style="font-size:13px;color:var(--text-muted);line-height:1.65;"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script>
+// ──────────────────────────────────────────────────────────────
+// LOGO SVG white (for dark canvas overlay)
+// ──────────────────────────────────────────────────────────────
+// LOGO_W removed — renderCanvas now uses per-template logo variants
+
+// ──────────────────────────────────────────────────────────────
+// STATE
+// ──────────────────────────────────────────────────────────────
+const S = { platform:'linkedin', tpl:'light-hero', pos:'tl', logo:true, customImg:null };
+
+// ──────────────────────────────────────────────────────────────
+// TEMPLATE DATA
+// ──────────────────────────────────────────────────────────────
+const TPLS = {
+  'light-hero':  { label:'Chiaro Hero',    bg:'#FDFCF8', dark:false, info:'Sfondo chiaro, titolo su 3 righe (scuro/arancione/scuro), CTA arancione in basso. Ideale per annunci e contenuti aspirazionali.' },
+  'dark-card':   { label:'Scuro + Card',   bg:'#040407', dark:true,  info:'Sfondo nero, card off-white con testo e fonte in sovrimpressione in basso. Perfetto per citazioni di retail manager o social proof.' },
+  'dark-glow':   { label:'Scuro Glow',     bg:'#040407', dark:true,  info:'Sfondo nero con alone arancione in basso a sinistra. Titolo grande bianco, logo in alto. Impatto visivo massimo per i KPI.' },
+  'img-title':   { label:'Immagine + Titolo', bg:'#040407', dark:true, info:'Immagine (o gradiente) con overlay scuro. Titolo bianco+arancione in basso a sinistra. Per contenuti con foto prodotto o retail.' },
+  'img-card':    { label:'Immagine + Card',   bg:'#040407', dark:true, info:'Immagine di sfondo con card off-white in basso a destra. Testo + CTA nella card. Ottimo per case study e risultati client.' },
+  'orange-bold': { label:'Arancione Bold', bg:'#FF6B03', dark:true,  info:'Sfondo arancione pieno, titolo bianco in 3 righe molto grande. Massima visibilità nel feed. Per annunci e feature launch.' },
+  'dark-clean':  { label:'Scuro Clean',    bg:'#040407', dark:true,  info:'Sfondo nero, testo su 3 livelli: titolo bianco, titolo arancione, testo piccolo. Minimalista, per claim di posizionamento.' },
+  'split':       { label:'Split',          bg:'#040407', dark:true,  info:'Metà superiore: immagine. Metà inferiore: sfondo off-white con testo e logo. Narrativa visiva in un formato elegante.' },
+};
+
+// ──────────────────────────────────────────────────────────────
+// PROMPTS — solo Claude e Gemini (8 template)
+// ──────────────────────────────────────────────────────────────
+const PROMPTS = {
+
+  /* ═══════════════════════════════════════════════════
+     1 · CHIARO HERO
+     Sfondo bianco, titolo 3 righe dark/arancione/dark,
+     CTA pill in basso. Usa per claim di posizionamento
+     e landing post.
+  ═══════════════════════════════════════════════════ */
+  'light-hero': {
+    claude: `Sei il copywriter ufficiale di Community Retail AI.
+
+CONTESTO VISUAL
+Template: sfondo bianco/off-white, logo in alto a sinistra, titolo su 3 righe (scuro / arancione / scuro), CTA pill arancione in basso.
+Piattaforma: [LINKEDIN / INSTAGRAM / FACEBOOK / TIKTOK]
+Tema del post: [es. "lancio Action Center" / "risultati pilot Q1" / "apertura demo gratuita"]
+
+TESTO NEL VISUAL (quello che vede chi scorre il feed)
+— Riga 1 (scuro): [PAROLA O FRASE CORTA]
+— Riga 2 (arancione): [PAROLA CHIAVE IN EVIDENZA]
+— Riga 3 (scuro): [COMPLETAMENTO]
+— CTA: [es. "Scopri come →"]
+
+CAPTION DA SCRIVERE
+Struttura esatta:
+1. HOOK (riga 1): dato o affermazione verificabile — zero intro
+2. CONTESTO (1-2 righe): chi, dove, quando — mai "i nostri clienti": usa "rete di 12 store, retail abbigliamento, Triveneto, aprile 2026"
+3. PERCHÉ IMPORTA (1 riga): cosa cambia per chi gestisce un retail simile
+4. CTA: → communityretail.it
+
+Regole ferree:
+✗ Zero aggettivi senza numero a supporto
+✗ Zero "innovativo", "rivoluzionario", "game-changer"
+✓ Tono: manager che parla a un altro manager
+✓ Ogni claim ha una fonte o un dato
+
+Lunghezze target:
+LinkedIn 200–280 car. · Instagram 80–110 · Facebook 250–350 · TikTok script 25–30 sec`,
+
+    gemini: `Sei il copywriter di Community Retail AI — CDP B2B per il retail italiano.
+
+TEMPLATE: sfondo bianco, titolo hero 3 righe dark/arancione/dark, CTA pill arancione.
+Piattaforma: [LINKEDIN / INSTAGRAM / FACEBOOK / TIKTOK]
+Tema: [ARGOMENTO DEL POST]
+
+TESTO NEL VISUAL
+Riga 1: [SCURO] · Riga 2: [ARANCIONE — parola chiave] · Riga 3: [SCURO]
+CTA nel visual: [es. "Scopri come →"]
+
+OUTPUT RICHIESTO: 2 varianti caption complete
+
+VARIANTE A — Diretta (fatti prima, poi contesto):
+[Dato o risultato concreto]. [2 righe: chi-dove-come]. [1 riga: implicazione per retail simile]. → communityretail.it
+
+VARIANTE B — Narrativa (situazione → soluzione → prova):
+[Situazione riconoscibile nel retail italiano]. [Community Retail AI ha fatto X]. [Dato come prova]. → communityretail.it
+
+Vincoli per entrambe:
+✓ Italiano diretto — zero anglicismi gratuiti
+✓ Fonte citata: rete pilot · 12 store · aprile 2026 (o il contesto reale che hai)
+✓ Hashtag: #CommunityRetailAI + 3 hashtag verticali (#RetailItaliano, ecc.)
+✗ Vietato: "AI-powered", "innovativo", "game-changer" senza numeri`,
+  },
+
+  /* ═══════════════════════════════════════════════════
+     2 · SCURO + CARD
+     Sfondo nero, card off-white con citazione o dato
+     in sovrimpressione in basso. Per social proof e
+     testimonianze (anonimizzate).
+  ═══════════════════════════════════════════════════ */
+  'dark-card': {
+    claude: `Sei il copywriter di Community Retail AI.
+
+CONTESTO VISUAL
+Template: sfondo nero, card off-white con dot arancione + testo + attributo in basso.
+TESTO NELLA CARD: "[CITAZIONE O DATO — es. '82% degli store manager apre l'app ogni mattina']"
+ATTRIBUTO: [es. "Retail Manager · abbigliamento · Triveneto · aprile 2026"]
+Piattaforma: [LINKEDIN / INSTAGRAM / FACEBOOK / TIKTOK]
+
+REGOLA PRINCIPALE: la caption NON ripete la card — la amplifica con contesto e prova.
+
+Struttura:
+1. HOOK: cosa dice questa citazione/dato sul retail italiano oggi (max 1 riga)
+2. CONTESTO: il tipo di retail, il metodo usato (SMS + RFM + Action Center), il periodo
+3. IMPLICAZIONE: cosa significa per chi NON ha ancora questo dato
+4. CTA: → communityretail.it
+
+Tono: editoriale, asciutto. Come un analyst che commenta un dato di settore.
+Lunghezze: LinkedIn 200–280 · Instagram 80–110 · Facebook 260–360`,
+
+    gemini: `Community Retail AI · template scuro con card citazione/dato.
+
+TESTO NELLA CARD: "[CITAZIONE O DATO]"
+ATTRIBUTO: [RETAIL TYPE · AREA · PERIODO]
+Piattaforma: [LINKEDIN / INSTAGRAM / FACEBOOK / TIKTOK]
+
+La caption amplifica la card, non la ripete.
+
+VARIANTE A — Per C-Level / Retail Manager:
+Dato → metodo che l'ha prodotto (1 riga) → cosa significa per il P&L → CTA
+
+VARIANTE B — Per Store Manager / Operativo:
+"I tuoi colleghi stanno già facendo questo" → dato come prova → domanda che invita al commento → CTA
+
+Entrambe le varianti devono:
+✓ Citare la fonte (anche anonima: "rete 12 store · retail abbigliamento · Triveneto")
+✓ Non inventare nomi aziende o persone
+✓ Chiudere con una domanda che invita al commento
+✓ Hashtag: #CommunityRetailAI #RetailItaliano + 2 verticali specifici`,
+  },
+
+  /* ═══════════════════════════════════════════════════
+     3 · SCURO GLOW
+     Sfondo nero con alone arancione in basso a sinistra,
+     logo orizzontale bianco in alto, numero grande bianco.
+     Per KPI e metriche di impatto.
+  ═══════════════════════════════════════════════════ */
+  'dark-glow': {
+    claude: `Sei il copywriter di Community Retail AI.
+
+CONTESTO VISUAL
+Template: sfondo nero con alone radiale arancione, logo in alto a sinistra, numero grande bianco al centro.
+NUMERO NEL VISUAL: [es. "€ 1,86M" / "50%" / "13.580"]
+COSA MISURA: [es. "fatturato recuperato in 5 mesi"]
+FONTE: [es. "rete pilot · 12 store · retail abbigliamento · Triveneto · aprile 2026"]
+Piattaforma: [LINKEDIN / INSTAGRAM / FACEBOOK / TIKTOK]
+
+Struttura caption:
+1. HOOK: "[NUMERO]. [4–5 parole che lo contestualizzano]." — nessuna intro, nessun cappello
+2. FONTE: una riga precisa (rete, tipo retail, area, periodo)
+3. METODO: max 1 riga (es. "campagne SMS + segmentazione RFM + Action Center quotidiano")
+4. IMPLICAZIONE: cosa significherebbe per chi gestisce un retail simile
+5. CTA: → communityretail.it
+
+Regole:
+✓ Il numero apre sempre — è la prova, va in testa
+✓ Ogni dato ha una fonte verificabile
+✗ Zero storytelling generico: i fatti parlano da soli
+Lunghezze: LinkedIn 200–280 · Instagram 90–110 · Facebook 280–380 · TikTok script 30 sec`,
+
+    gemini: `Community Retail AI · template KPI con glow arancione.
+
+NUMERO NEL VISUAL: [DATO] — [COSA MISURA]
+FONTE: [RETE/PERIODO/SETTORE]
+Piattaforma: [LINKEDIN / INSTAGRAM / FACEBOOK / TIKTOK]
+
+Il visual è impattante — la caption deve essere altrettanto precisa.
+
+VARIANTE A — Tecnica (C-Level, Retail Manager):
+[Numero]. [Fonte in 1 riga]. [Metodo: SMS + RFM + Action Center]. [Implicazione ROI]. → communityretail.it
+
+VARIANTE B — Narrativa (più umana, per coinvolgimento):
+[Situazione tipo del retail italiano] → [questo numero come risultato] → [cosa serve per ottenerlo] → CTA
+
+Per entrambe:
+✓ Fonte sempre presente e precisa
+✓ Il metodo è sempre SMS + segmentazione RFM + Action Center
+✗ Zero aggettivi senza numero: mai "eccellente risultato", sempre "€ 1,86M in 5 mesi"
+Hashtag: #CommunityRetailAI #RetailItaliano + 3 verticali (#FashionRetail, #CDP, ecc.)`,
+  },
+
+  /* ═══════════════════════════════════════════════════
+     4 · IMMAGINE + TITOLO
+     Immagine di sfondo full-bleed, gradiente overlay
+     scuro, icona in alto a sinistra, titolo bianco +
+     arancione in basso a sinistra.
+  ═══════════════════════════════════════════════════ */
+  'img-title': {
+    claude: `Sei il copywriter di Community Retail AI.
+
+CONTESTO VISUAL
+Template: foto retail/store/prodotto full-bleed, overlay scuro in basso, titolo bianco + riga arancione in basso a sinistra.
+TITOLO NEL VISUAL — Riga bianca: "[TESTO]" · Riga arancione: "[TESTO]"
+IMMAGINE MOSTRA: [es. "store abbigliamento affollato" / "scaffali negozio" / "cliente allo scontrino"]
+Piattaforma: [LINKEDIN / INSTAGRAM / FACEBOOK / TIKTOK]
+
+REGOLA: la caption NON descrive l'immagine — la usa come punto di partenza per un insight.
+
+Struttura:
+1. HOOK: la domanda o l'insight che l'immagine suggerisce (non "in questa foto...")
+2. DATO: 1 numero reale che supporta il titolo nel visual
+3. CONTESTO: tipo di retail, metodo, periodo
+4. CTA: → communityretail.it
+
+Tono: giornalistico, concreto. L'immagine evoca, la caption spiega perché conta.
+Lunghezze: LinkedIn 160–240 · Instagram 70–100 · Facebook 220–320`,
+
+    gemini: `Community Retail AI · template immagine con titolo sovrapposto.
+
+TITOLO NEL VISUAL: "[RIGA BIANCA]" + "[RIGA ARANCIONE]"
+IMMAGINE: [BREVE DESCRIZIONE DEL SOGGETTO]
+Piattaforma: [LINKEDIN / INSTAGRAM / FACEBOOK / TIKTOK]
+
+La caption NON descrive l'immagine — la usa per portare un insight.
+
+VARIANTE A — Breve (Instagram/TikTok): max 2 righe + hashtag
+"[Insight diretto dall'immagine]. [1 dato reale]. → communityretail.it"
+
+VARIANTE B — Estesa (LinkedIn/Facebook):
+[Cosa mostra l'immagine come metafora del retail italiano] → [dato che la sostanzia] → [cosa fa Community Retail AI] → domanda alla community → CTA
+
+Vincoli:
+✓ Almeno 1 dato numerico reale
+✓ Fonte citata se presente
+✓ Hashtag: #CommunityRetailAI #RetailItaliano + 2 verticali`,
+  },
+
+  /* ═══════════════════════════════════════════════════
+     5 · IMMAGINE + CARD
+     Immagine full-bleed, overlay scuro leggero,
+     card off-white in basso a destra con testo + CTA.
+     Per case study e risultati con contesto visivo.
+  ═══════════════════════════════════════════════════ */
+  'img-card': {
+    claude: `Sei il copywriter di Community Retail AI.
+
+CONTESTO VISUAL
+Template: foto retail full-bleed con overlay scuro, card off-white in basso a destra con dato e CTA.
+TESTO NELLA CARD: "[DATO O FRASE BREVE — es. '50% recall rate medio su 12 store']"
+CTA NELLA CARD: "[es. '→ communityretail.it']"
+IMMAGINE MOSTRA: [DESCRIZIONE]
+Piattaforma: [LINKEDIN / INSTAGRAM / FACEBOOK / TIKTOK]
+
+La caption racconta la storia che porta al dato nella card.
+
+Struttura:
+1. CHI: tipo di retail (anonimo — no nomi), area, dimensione
+2. SFIDA: cosa non funzionava prima (1 riga)
+3. COSA HA FATTO: metodo in 1 riga (SMS + RFM + Action Center)
+4. RISULTATO: il dato nella card, con fonte e periodo
+5. CTA: → communityretail.it
+
+Tono: case study compatto. Specifico, verificabile, zero imbellettamenti.
+Lunghezze: LinkedIn 220–300 · Instagram 90–120 · Facebook 280–380`,
+
+    gemini: `Community Retail AI · template immagine con card risultati.
+
+DATO NELLA CARD: "[DATO]"
+IMMAGINE: [COSA MOSTRA]
+FONTE: [RETAIL TYPE · AREA · PERIODO]
+Piattaforma: [LINKEDIN / INSTAGRAM / FACEBOOK / TIKTOK]
+
+OUTPUT: 2 varianti caption
+
+VARIANTE A — Per chi conosce il settore (C-Level / Retail Manager):
+[Chi era] → [metodo applicato] → [dato come risultato misurato] → [replica per il loro business]
+
+VARIANTE B — Per chi scopre Community Retail AI:
+[Problema comune del retail italiano] → [cosa ha cambiato] → [dato come prova] → [CTA con invito]
+
+Entrambe:
+✓ Fonte sempre citata anche se anonima
+✓ Metodo sempre presente: SMS + segmentazione RFM + Action Center quotidiano
+✓ Domanda finale che invita al commento
+✓ Hashtag: #CommunityRetailAI #RetailItaliano + 2 verticali`,
+  },
+
+  /* ═══════════════════════════════════════════════════
+     6 · ARANCIONE BOLD
+     Sfondo #FF6B03 pieno, logo orizzontale bianco in
+     alto, titolo 3 righe gigantesche bianco/scuro/bianco.
+     Per annunci e launch.
+  ═══════════════════════════════════════════════════ */
+  'orange-bold': {
+    claude: `Sei il copywriter di Community Retail AI.
+
+CONTESTO VISUAL
+Template: sfondo arancione pieno (#FF6B03), logo bianco in alto, titolo 3 righe molto grandi.
+TITOLO NEL VISUAL:
+— Riga 1 (bianco): "[TESTO]"
+— Riga 2 (scuro/nero): "[PAROLA CHIAVE SCURA — contrasto sull'arancione]"
+— Riga 3 (bianco): "[TESTO]"
+ANNUNCIO / TEMA: [COSA SI COMUNICA — es. "lancio nuova feature Action Center 2.0" / "apertura demo" / "risultato milestone"]
+Piattaforma: [LINKEDIN / INSTAGRAM / FACEBOOK / TIKTOK]
+
+Il visual è già energico. La caption spiega il "perché dovrebbe importarmi".
+
+Struttura:
+1. COSA È (max 1 riga): l'annuncio come fatto concreto, senza hype
+2. PERCHÉ CAMBIA QUALCOSA: cosa può fare ORA un retail manager che non poteva prima
+3. NUMERO O DATO (se disponibile): la prova che funziona già
+4. COME ACCEDERE: dove andare / come iniziare
+5. CTA: → communityretail.it
+
+Lunghezze: LinkedIn 180–240 · Instagram 70–90 · Facebook 240–300 · TikTok 25 sec script`,
+
+    gemini: `Community Retail AI · template arancione bold per annunci.
+
+ANNUNCIO: [NOME/DESCRIZIONE]
+BENEFICIO DIRETTO: [COSA CAMBIA per chi usa la piattaforma]
+Piattaforma: [LINKEDIN / INSTAGRAM / FACEBOOK / TIKTOK]
+
+Genera prima 3 hook alternativi (solo prima riga), poi scegli il migliore per la piattaforma:
+1. DIRETTO: "[Beneficio come fatto concreto]."
+2. DOMANDA: "[La domanda che questo risolve]?"
+3. NUMERO: "[Dato che giustifica l'annuncio]."
+
+Poi scrivi la caption completa con l'hook scelto:
+[Hook] → [Cosa cambia in pratica per un retail manager] → [Come si accede] → CTA
+
+Regole:
+✓ L'energia viene dal beneficio concreto, non dagli aggettivi
+✗ Vietato: "siamo felici di annunciare", "finalmente", "rivoluzionario"
+✓ Se disponibile: porta 1 dato reale dal pilot o da un early adopter
+Hashtag: #CommunityRetailAI #RetailItaliano + 2 verticali specifici`,
+  },
+
+  /* ═══════════════════════════════════════════════════
+     7 · SCURO CLEAN
+     Sfondo nero, icona in alto a sinistra, gerarchia
+     testuale su 3 livelli: bianco grande / arancione
+     grande / testo muto piccolo.
+     Per posizionamento e claim editoriali.
+  ═══════════════════════════════════════════════════ */
+  'dark-clean': {
+    claude: `Sei il copywriter di Community Retail AI.
+
+CONTESTO VISUAL
+Template: sfondo nero, tre livelli di testo — titolo bianco grande, titolo arancione grande, body muto piccolo.
+RIGA 1 (bianco, grande): "[TESTO]"
+RIGA 2 (arancione, grande): "[TESTO]"
+RIGA 3 (muto, piccolo): "[TESTO]"
+Piattaforma: [LINKEDIN / INSTAGRAM / FACEBOOK / TIKTOK]
+
+Il visual è minimalista e diretto. La caption deve avere la stessa densità.
+
+Struttura:
+1. HOOK (1 riga): affermazione che amplifica le 3 righe del visual — NON le ripete
+2. PROVA (1–2 righe): il dato o il contesto reale che rende quella affermazione credibile
+3. IMPLICAZIONE (1 riga): cosa significa per chi gestisce un retail
+4. CTA: → communityretail.it
+
+Tono: editoriale, autorevole. Come una headline di The Economist adattata al retail italiano.
+Lunghezze: LinkedIn 140–200 · Instagram 60–90 · Facebook 180–260`,
+
+    gemini: `Community Retail AI · template minimalista scuro, 3 livelli testo.
+
+RIGA BIANCA: "[TESTO]"
+RIGA ARANCIONE: "[TESTO]"
+RIGA MUTA: "[TESTO]"
+Piattaforma: [LINKEDIN / INSTAGRAM / FACEBOOK / TIKTOK]
+
+La caption non ripete le righe — le contestualizza con una prova reale.
+
+VARIANTE A — Breve (Instagram/TikTok): max 90 caratteri + hashtag
+Una frase che porta 1 dato a supporto di ciò che il visual afferma.
+
+VARIANTE B — Editoriale (LinkedIn/Facebook):
+[Cosa vuol dire quella affermazione per il retail italiano concreto] → [dato o esempio] → [domanda alla community] → CTA
+
+Regole:
+✓ Tono editoriale, mai promozionale
+✓ Almeno 1 riferimento concreto al retail italiano
+✓ Domanda finale che invita al commento (solo nella variante B)
+Hashtag: #CommunityRetailAI #RetailItaliano + 2 verticali`,
+  },
+
+  /* ═══════════════════════════════════════════════════
+     8 · SPLIT
+     58% superiore: immagine/placeholder scuro.
+     42% inferiore: off-white con testo + logo in basso.
+     Per narrativa visiva "prima/situazione → dopo/dato".
+  ═══════════════════════════════════════════════════ */
+  'split': {
+    claude: `Sei il copywriter di Community Retail AI.
+
+CONTESTO VISUAL
+Template: metà superiore immagine scura, metà inferiore off-white con testo e logo.
+TESTO NELLA METÀ BIANCA: "[DATO O FRASE — es. '13.580 clienti tornati in negozio in 5 mesi']"
+IMMAGINE (metà superiore) mostra: [COSA VEDIAMO — es. "store vuoto" / "team retail" / "scaffali"]
+FONTE: [RETAIL TYPE · AREA · PERIODO]
+Piattaforma: [LINKEDIN / INSTAGRAM / FACEBOOK / TIKTOK]
+
+Il formato split racconta una storia in due parti. La caption arriva alla punchline.
+
+Struttura:
+1. SITUAZIONE (1 riga): quello che mostra l'immagine — senza descriverla letteralmente
+2. SVOLTA (1 riga): cosa è cambiato e come (metodo in sintesi)
+3. DATO (= la punchline nella parte bianca): il numero con fonte
+4. IMPLICAZIONE: cosa significa per chi gestisce un retail simile
+5. CTA: → communityretail.it
+
+Tono: narrativo ma asciutto. Ogni frase porta alla successiva senza fronzoli.
+Lunghezze: LinkedIn 200–280 · Instagram 90–120 · Facebook 260–360`,
+
+    gemini: `Community Retail AI · template split immagine/testo.
+
+TESTO NELLA PARTE BIANCA: "[DATO O FRASE]"
+IMMAGINE (parte superiore): [COSA MOSTRA]
+FONTE: [RETAIL TYPE · AREA · PERIODO]
+Piattaforma: [LINKEDIN / INSTAGRAM / FACEBOOK / TIKTOK]
+
+Il formato suggerisce "situazione → risultato" oppure "prima → dopo".
+Scrivi 2 varianti:
+
+VARIANTE A — Prima/Dopo:
+[Il problema visibile nell'immagine] → [cosa ha cambiato Community Retail AI] → [il dato come prova]
+
+VARIANTE B — Contesto/Prova:
+[Chi è questo retail, senza nomi] → [cosa cercava di risolvere] → [risultato ottenuto] → [invito]
+
+Entrambe:
+✓ Il dato nella parte bianca è la punchline — la caption ci arriva narrativamente
+✓ Fonte citata con precisione (anche anonima)
+✓ Metodo: SMS + segmentazione RFM + Action Center quotidiano
+✓ CTA: → communityretail.it · Hashtag: #CommunityRetailAI #RetailItaliano + 2 verticali`,
+  },
+};
+
+// ──────────────────────────────────────────────────────────────
+// RENDER
+// ──────────────────────────────────────────────────────────────
+
+function renderThumbs() {
+  const c = document.getElementById('tpl-thumbs');
+  c.innerHTML = '';
+  Object.entries(TPLS).forEach(([key, t]) => {
+    const d = document.createElement('div');
+    d.className = 'tpl-thumb' + (S.tpl === key ? ' on' : '');
+    d.onclick = () => { S.tpl = key; S.customImg = null; renderAll(); };
+    const labelColor = t.dark ? 'rgba(255,107,3,.8)' : 'var(--primary)';
+    d.innerHTML = `<div class="tpl-thumb-inner" style="background:${t.bg};">
+      <div style="font-family:var(--fd);font-size:8px;font-weight:700;color:${labelColor};line-height:1.2;text-align:center;">${t.label.replace('·','<br>')}</div>
+    </div>`;
+    c.appendChild(d);
+  });
+}
+
+function renderCanvas() {
+  const c = document.getElementById('canvas-inner');
+  const t = TPLS[S.tpl];
+
+  // logo overlay (user-controlled)
+  const logoSrc   = t.dark ? 'logo-compact-white.svg'    : 'logo-compact-dark.svg';
+  const logoHoriz = t.dark ? 'logo-horizontal-white.svg' : 'logo-horizontal-dark.svg';
+  const pos = `tpl-logo ${S.pos}`;
+  const logoEl = S.logo ? `<div class="${pos}"><img src="${logoSrc}" alt="logo"></div>` : '';
+
+  // custom image overlay
+  const bgImg = S.customImg
+    ? `<img style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;" src="${S.customImg}" alt="">`
+    : '';
+
+  const h = {
+
+    /* ── 1 · LIGHT HERO ── */
+    'light-hero': `
+      <div class="lh-inner">
+        <img class="lh-logo" src="logo-horizontal-dark.svg" alt="logo">
+        <div class="lh-title">Risultati<em>misurabili.</em>Ogni mese.</div>
+        <div class="lh-cta">
+          <div class="lh-btn">Scopri come →</div>
+          <div class="lh-url">communityretail.it</div>
+        </div>
+      </div>
+      ${bgImg}${logoEl}`,
+
+    /* ── 2 · DARK CARD ── */
+    'dark-card': `
+      <div class="dc-inner">
+        <img class="dc-icon" src="logo-compact-white.svg" alt="logo">
+        <div class="dc-card">
+          <div class="dc-dot"></div>
+          <div class="dc-quote">"Il cliente che compra tre volte e tu non lo riconosci è già perso."</div>
+          <div class="dc-attr">Retail Manager · abbigliamento · Triveneto</div>
+        </div>
+      </div>
+      ${bgImg}${logoEl}`,
+
+    /* ── 3 · DARK GLOW ── */
+    'dark-glow': `
+      <div class="dg-inner">
+        <img class="dg-logo" src="logo-horizontal-white.svg" alt="logo">
+        <div style="margin-top:auto;">
+          <div class="dg-num">€ 1,86M</div>
+          <div class="dg-sub">fatturato recuperato · 5 mesi</div>
+          <div class="dg-sep"></div>
+          <div class="dg-body">Il retail che agisce porta risultati misurabili.</div>
+        </div>
+      </div>
+      ${bgImg}${logoEl}`,
+
+    /* ── 4 · IMAGE + TITLE ── */
+    'img-title': `
+      <div class="it-img"><span class="it-img-label">Immagine</span></div>
+      <div class="it-overlay"></div>
+      <img class="it-icon" src="logo-compact-white.svg" alt="logo">
+      <div class="it-title">
+        <div class="t-title">Retail italiano.<em>Dati reali.</em></div>
+        <div class="t-body" style="color:rgba(253,252,248,.4);margin-top:3%;">communityretail.it</div>
+      </div>
+      ${bgImg}${logoEl}`,
+
+    /* ── 5 · IMAGE + CARD ── */
+    'img-card': `
+      <div class="ic-img"><span class="ic-img-label">Immagine</span></div>
+      <div class="ic-overlay"></div>
+      <img class="ic-icon" src="logo-compact-white.svg" alt="logo">
+      <div class="ic-card">
+        <div class="ic-text">50% recall rate medio su 12 store · rete pilot abbigliamento · Triveneto</div>
+        <div class="ic-cta">→ communityretail.it</div>
+      </div>
+      ${bgImg}${logoEl}`,
+
+    /* ── 6 · ORANGE BOLD ── */
+    'orange-bold': `
+      <div class="ob-inner">
+        <img class="ob-logo" src="logo-horizontal-white.svg" alt="logo">
+        <div class="ob-title">
+          <div class="ob-l1">Ogni cliente</div>
+          <div class="ob-l2">conta.</div>
+          <div class="ob-l3">Ora si vede.</div>
+        </div>
+        <div class="ob-url">communityretail.it</div>
+      </div>
+      ${bgImg}${logoEl}`,
+
+    /* ── 7 · DARK CLEAN ── */
+    'dark-clean': `
+      <div class="dclean-inner">
+        <img class="dclean-icon" src="logo-compact-white.svg" alt="logo">
+        <div class="dclean-body">
+          <div class="dclean-t1">Il retail</div>
+          <div class="dclean-t2">che agisce.</div>
+          <div class="dclean-t3">Porta risultati misurabili ogni mese,<br>senza marketing-speak.</div>
+        </div>
+        <div class="dclean-url">communityretail.it</div>
+      </div>
+      ${bgImg}${logoEl}`,
+
+    /* ── 8 · SPLIT ── */
+    'split': `
+      <div class="sp-top">
+        <img class="sp-top-icon" src="logo-compact-white.svg" alt="logo">
+        <span class="sp-top-label">Immagine</span>
+      </div>
+      <div class="sp-bottom">
+        <div class="sp-text">13.580 clienti tornati in negozio in 5 mesi.<br>Dati reali. Zero marketing-speak.</div>
+        <img class="sp-logo" src="logo-horizontal-dark.svg" alt="logo">
+      </div>
+      ${bgImg}${logoEl}`,
+  };
+
+  c.innerHTML = h[S.tpl] || h['light-hero'];
+}
+
+function renderPrompts() {
+  const pg = document.getElementById('prompt-grid');
+  const p = PROMPTS[S.tpl];
+  if (!p) return;
+
+  const ai = [
+    { id:'claude', name:'Claude', icon:'✦', color:'#C084FC', bg:'rgba(192,132,252,.12)' },
+    { id:'gemini', name:'Gemini', icon:'⬡', color:'#34A853', bg:'rgba(52,168,83,.12)' },
+  ];
+
+  pg.innerHTML = ai.map(a => {
+    const raw = p[a.id] || '';
+    const text = raw.replace(/\[([^\]]+)\]/g, '<span class="ph">[$1]</span>');
+    return `<div class="prompt-card">
+      <div class="pc-head">
+        <div class="pc-icon" style="background:${a.bg};color:${a.color};">${a.icon}</div>
+        <div class="pc-name" style="color:${a.color};">${a.name}</div>
+      </div>
+      <div class="pc-body">${text}</div>
+      <div class="pc-foot">
+        <div class="pc-foot-note">Sostituisci i <span style="color:var(--primary);">[PLACEHOLDER]</span></div>
+        <button class="copy-btn" onclick="copyPrompt('${a.id}',this,'${S.tpl}')">Copia</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderInfo() {
+  const b = TPLS[S.tpl];
+  document.getElementById('tpl-info-text').textContent = b?.info || '';
+}
+
+// ──────────────────────────────────────────────────────────────
+// TEMPLATE DOWNLOAD
+// ──────────────────────────────────────────────────────────────
+function downloadTplPNG(btn) {
+  const canvas = document.getElementById('canvas-inner');
+  const name   = (TPLS[S.tpl]?.label || S.tpl).replace(/\s+/g,'-').toLowerCase();
+  btn.textContent = 'Generando…';
+  btn.classList.add('done');
+  html2canvas(canvas, {
+    scale: 3,
+    useCORS: true,
+    allowTaint: true,
+    backgroundColor: null,
+    logging: false,
+  }).then(c => {
+    const a = document.createElement('a');
+    a.href     = c.toDataURL('image/png');
+    a.download = `community-retail-ai-${name}.png`;
+    a.click();
+    btn.textContent = '↓ Scarica PNG';
+    btn.classList.remove('done');
+  }).catch(() => {
+    btn.textContent = '↓ Scarica PNG';
+    btn.classList.remove('done');
+  });
+}
+
+function downloadTplSVG(btn) {
+  const t    = TPLS[S.tpl];
+  const name = (t?.label || S.tpl).replace(/\s+/g,'-').toLowerCase();
+  // Build a simple SVG wrapper that embeds a foreignObject with the canvas HTML
+  const canvas = document.getElementById('canvas-inner');
+  const w = canvas.offsetWidth;
+  const h = canvas.offsetHeight;
+  const inner = canvas.innerHTML
+    .replace(/&/g,'&amp;')
+    .replace(/"/g,'&quot;');
+  // For a proper SVG we use foreignObject — works in Inkscape / browsers
+  const svg = `<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xhtml="http://www.w3.org/1999/xhtml"
+     width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">
+  <rect width="${w}" height="${h}" fill="${t?.bg || '#040407'}"/>
+  <foreignObject width="${w}" height="${h}">
+    <xhtml:div xmlns="http://www.w3.org/1999/xhtml"
+      style="width:${w}px;height:${h}px;overflow:hidden;font-family:'Space Grotesk',sans-serif;">
+      ${canvas.innerHTML}
+    </xhtml:div>
+  </foreignObject>
+</svg>`;
+  const blob = new Blob([svg], {type:'image/svg+xml;charset=utf-8'});
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href     = url;
+  a.download = `community-retail-ai-${name}.svg`;
+  a.click();
+  URL.revokeObjectURL(url);
+  btn.textContent = 'Scaricato ✓';
+  btn.classList.add('done');
+  setTimeout(() => { btn.textContent = '↓ Scarica SVG'; btn.classList.remove('done'); }, 2000);
+}
+
+function renderAll() {
+  renderThumbs();
+  renderCanvas();
+  renderPrompts();
+  renderInfo();
+  // sync type radios
+  document.querySelectorAll('#ctrl-tpl-type .radio').forEach(r => {
+    r.classList.toggle('on', r.dataset.tpl === S.tpl);
+  });
+}
+
+// ──────────────────────────────────────────────────────────────
+// INTERACTIONS
+// ──────────────────────────────────────────────────────────────
+function stPlatform(p, btn) {
+  S.platform = p;
+  document.querySelectorAll('.stab').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  renderAll();
+}
+
+function selectTplType(el) {
+  S.tpl = el.dataset.tpl;
+  S.customImg = null;
+  renderAll();
+}
+
+function setPos(pos, btn) {
+  S.pos = pos;
+  document.querySelectorAll('.pos-btn').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  renderCanvas();
+}
+
+function toggleLogo(el) {
+  S.logo = !S.logo;
+  el.classList.toggle('on', S.logo);
+  renderCanvas();
+}
+
+function handleUpload(e) {
+  const f = e.target.files[0];
+  if (!f) return;
+  const r = new FileReader();
+  r.onload = ev => { S.customImg = ev.target.result; renderCanvas(); };
+  r.readAsDataURL(f);
+}
+
+function copyPrompt(aiId, btn, tplKey) {
+  const raw = PROMPTS[tplKey][aiId] || '';
+  navigator.clipboard.writeText(raw).then(() => {
+    btn.textContent = 'Copiato ✓';
+    btn.classList.add('done');
+    setTimeout(() => { btn.textContent = 'Copia'; btn.classList.remove('done'); }, 2200);
+  });
+}
+
+// ──────────────────────────────────────────────────────────────
+// SOCIAL TABS
+// ──────────────────────────────────────────────────────────────
+function switchSocialTab(id) {
+  const ids = ['li','ig','fb','tk'];
+  document.querySelectorAll('#social-tabs .ptab').forEach((t,i) => t.classList.toggle('on', ids[i]===id));
+  document.querySelectorAll('.ppanel').forEach(p => p.classList.toggle('on', p.id===`panel-${id}`));
+}
+
+// ──────────────────────────────────────────────────────────────
+// ACTIVE NAV
+// ──────────────────────────────────────────────────────────────
+const secs = document.querySelectorAll('section[id]');
+const navAs = document.querySelectorAll('.nav-a');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  secs.forEach(s => { if (window.scrollY >= s.offsetTop - 140) cur = s.id; });
+  navAs.forEach(n => n.classList.toggle('active', n.getAttribute('href') === `#${cur}`));
+}, { passive:true });
+
+// ──────────────────────────────────────────────────────────────
+// INIT
+// ──────────────────────────────────────────────────────────────
+renderAll();
+</script>
+</body>
+</html>
