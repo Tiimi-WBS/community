@@ -770,6 +770,71 @@
     ::-webkit-scrollbar{width:5px;}
     ::-webkit-scrollbar-track{background:transparent;}
     ::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px;}
+
+    /* ── SEZIONE PROMPT GIULIA ─────────────────── */
+    .giulia-intro{
+      background:rgba(255,107,3,.06);border:1px solid rgba(255,107,3,.2);
+      border-radius:14px;padding:24px 28px;margin-bottom:40px;
+      display:flex;align-items:flex-start;gap:20px;
+    }
+    .giulia-avatar{
+      width:48px;height:48px;border-radius:50%;flex-shrink:0;
+      background:var(--primary);display:flex;align-items:center;justify-content:center;
+      font-size:22px;
+    }
+    .giulia-intro-title{font-family:var(--fd);font-size:15px;font-weight:700;color:var(--fg);margin-bottom:4px;}
+    .giulia-intro-body{font-size:13px;color:var(--text-muted);line-height:1.6;}
+
+    .giulia-brand-pills{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px;}
+    .g-pill{
+      padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600;
+      border:1px solid var(--border2);color:var(--text-muted);
+      display:flex;align-items:center;gap:7px;
+    }
+    .g-pill-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+
+    .giulia-prompt-wrap{
+      background:var(--surface2);border:1px solid var(--border);
+      border-radius:14px;overflow:hidden;margin-bottom:32px;
+    }
+    .giulia-prompt-head{
+      padding:14px 20px;border-bottom:1px solid var(--border);
+      display:flex;align-items:center;justify-content:space-between;
+    }
+    .giulia-prompt-label{
+      font-family:var(--fd);font-size:13px;font-weight:700;color:var(--primary);
+      display:flex;align-items:center;gap:8px;
+    }
+    .giulia-prompt-body{
+      padding:20px 24px;font-size:12.5px;line-height:1.85;
+      color:var(--text-muted);white-space:pre-wrap;font-family:inherit;
+      max-height:600px;overflow-y:auto;
+    }
+    .giulia-prompt-body .g-ph{color:var(--primary);font-weight:600;}
+    .giulia-prompt-body .g-section{
+      font-family:var(--fd);font-weight:700;font-size:11px;
+      color:var(--fg);letter-spacing:.06em;text-transform:uppercase;
+      border-bottom:1px solid var(--border);padding-bottom:4px;margin:16px 0 8px;
+    }
+    .giulia-prompt-foot{
+      padding:12px 20px;border-top:1px solid var(--border);
+      display:flex;align-items:center;justify-content:space-between;gap:12px;
+    }
+    .giulia-prompt-note{font-size:11px;color:var(--text-dim);}
+    .giulia-copy-btn{
+      padding:7px 20px;background:var(--primary);color:#fff;
+      border:none;border-radius:7px;font-size:12px;font-weight:700;
+      cursor:pointer;transition:opacity .14s;
+    }
+    .giulia-copy-btn:hover{opacity:.85;}
+    .giulia-copy-btn.done{background:var(--success);}
+
+    .giulia-logo-note{
+      background:var(--surface3);border:1px dashed var(--border2);
+      border-radius:10px;padding:16px 20px;
+      display:flex;align-items:center;gap:14px;font-size:13px;color:var(--text-muted);
+    }
+    .giulia-logo-note strong{color:var(--fg);}
   </style>
 </head>
 <body>
@@ -796,6 +861,7 @@
     <div class="nav-section">
       <div class="nav-section-title">Tool</div>
       <a class="nav-a" href="#studio"><span class="nav-pip"></span>🎨 Template Studio</a>
+      <a class="nav-a" href="#piano-linkedin"><span class="nav-pip"></span>✍️ Prompt Giulia</a>
     </div>
   </nav>
   <div class="sb-foot">v2.0 · Maggio 2026<br>Websonica Srl · Padova</div>
@@ -1421,14 +1487,6 @@
           <div class="radio"     data-tpl="dark-clean"     onclick="selectTplType(this)">Scuro · Clean</div>
           <div class="radio"     data-tpl="split"          onclick="selectTplType(this)">Split</div>
         </div>
-          <div class="radio"     data-tpl="dark-card"    onclick="selectTplType(this)">Scuro · Card</div>
-          <div class="radio"     data-tpl="dark-glow"    onclick="selectTplType(this)">Scuro · Glow</div>
-          <div class="radio"     data-tpl="img-title"    onclick="selectTplType(this)">Immagine · Titolo</div>
-          <div class="radio"     data-tpl="img-card"     onclick="selectTplType(this)">Immagine · Card</div>
-          <div class="radio"     data-tpl="orange-bold"  onclick="selectTplType(this)">Arancione · Bold</div>
-          <div class="radio"     data-tpl="dark-clean"   onclick="selectTplType(this)">Scuro · Clean</div>
-          <div class="radio"     data-tpl="split"        onclick="selectTplType(this)">Split · Due metà</div>
-        </div>
       </div>
 
       <div class="ctrl">
@@ -1457,6 +1515,57 @@
   </div>
 </section>
 
+<!-- ── 08 PROMPT GIULIA — PIANO LINKEDIN ───── -->
+<section id="piano-linkedin" class="sec">
+  <div class="slabel">// 08 · Prompt Giulia</div>
+  <h2 class="sh2">Piano editoriale LinkedIn</h2>
+  <p class="sp">Prompt completo per generare il piano editoriale settimanale di Alberto Riolfo su LinkedIn. Già integrato con la palette, i font, i template e il logo Community Retail AI. Incollalo in Claude o Gemini, sostituisci solo le date e il tema della settimana.</p>
+
+  <!-- Intro Giulia -->
+  <div class="giulia-intro">
+    <div class="giulia-avatar">✍️</div>
+    <div>
+      <div class="giulia-intro-title">Prompt di Giulia — versione brand-integrated</div>
+      <div class="giulia-intro-body">Questo prompt include automaticamente la palette (#FF6B03, #040407, #FDFCF8), i font (Space Grotesk + Plus Jakarta Sans), gli 8 template disponibili e i file logo da usare. Ogni settimana basta aggiornare le date e il focus tematico.</div>
+    </div>
+  </div>
+
+  <!-- Pillole brand -->
+  <div class="giulia-brand-pills">
+    <div class="g-pill"><div class="g-pill-dot" style="background:#FF6B03;"></div>#FF6B03 · Orange</div>
+    <div class="g-pill"><div class="g-pill-dot" style="background:#040407;border:1px solid #444;"></div>#040407 · Dark</div>
+    <div class="g-pill"><div class="g-pill-dot" style="background:#FDFCF8;border:1px solid #ccc;"></div>#FDFCF8 · Off-white</div>
+    <div class="g-pill"><div class="g-pill-dot" style="background:#3A3A3A;"></div>#3A3A3A · Gray</div>
+    <div class="g-pill">Space Grotesk — Headline</div>
+    <div class="g-pill">Plus Jakarta Sans — Body</div>
+    <div class="g-pill">8 template · 4 piattaforme</div>
+  </div>
+
+  <!-- Logo note -->
+  <div class="giulia-logo-note" style="margin-bottom:32px;">
+    <img src="logo-compact-dark.png" alt="Logo" style="height:36px;width:auto;flex-shrink:0;">
+    <div>
+      <strong>Logo da allegare alla richiesta grafica:</strong> usa <code style="background:var(--surface3);padding:2px 6px;border-radius:4px;font-size:11px;">logo-horizontal-dark.png</code> su sfondo chiaro/arancio, <code style="background:var(--surface3);padding:2px 6px;border-radius:4px;font-size:11px;">logo-horizontal-white.png</code> su sfondo scuro. Puoi scaricarli dalla sezione Logo → Kit Loghi.
+    </div>
+  </div>
+
+  <!-- Prompt box -->
+  <div class="giulia-prompt-wrap">
+    <div class="giulia-prompt-head">
+      <div class="giulia-prompt-label">
+        <span style="font-size:16px;">✦</span> Prompt completo per Claude / Gemini
+      </div>
+      <button class="giulia-copy-btn" id="giulia-copy-btn" onclick="copyGiuliaPrompt(this)">Copia prompt</button>
+    </div>
+    <div class="giulia-prompt-body" id="giulia-prompt-rendered"></div>
+    <div class="giulia-prompt-foot">
+      <div class="giulia-prompt-note">Sostituisci le parti <span style="color:var(--primary);font-weight:600;">[IN MAIUSCOLO]</span> con i dati della settimana</div>
+      <button class="giulia-copy-btn" onclick="copyGiuliaPrompt(this)">Copia prompt</button>
+    </div>
+  </div>
+
+</section>
+
 </main>
 
 <script>
@@ -1470,7 +1579,7 @@
 // plain brandbook.html uses relative file paths instead)
 // ──────────────────────────────────────────────────────────────
 if (typeof ASSET_MAP === 'undefined') {
-  var ASSET_MAP = {
+  window.ASSET_MAP = {
     'logo-horizontal-dark.svg':  'logo-horizontal-dark.svg',
     'logo-horizontal-white.svg': 'logo-horizontal-white.svg',
     'logo-compact-dark.svg':     'logo-compact-dark.svg',
@@ -2203,6 +2312,103 @@ function copyPrompt(aiId, btn, tplKey) {
     setTimeout(() => { btn.textContent = 'Copia'; btn.classList.remove('done'); }, 2200);
   });
 }
+
+// ──────────────────────────────────────────────────────────────
+// PROMPT GIULIA — PIANO LINKEDIN
+// ──────────────────────────────────────────────────────────────
+const GIULIA_PROMPT = `Sei il content strategist LinkedIn di Community Retail AI.
+
+━━ IDENTITÀ DEL BRAND ━━
+Community Retail AI è un CDP B2B SaaS per il retail italiano che trasforma i dati in azioni quotidiane misurabili.
+Sito: communityretail.it
+Settore: retail fisico italiano (abbigliamento, GDO, lifestyle, farmacia, sport)
+
+PALETTE BRAND:
+• Arancione principale: #FF6B03 — usa per accenti, numeri, parole chiave nelle grafiche
+• Nero profondo: #040407 — testi body, sfondi dark
+• Off-white: #FDFCF8 — sfondi chiari, testo su dark
+• Grigio scuro: #3A3A3A — template neutri
+
+TIPOGRAFIA:
+• Headline / Display: Space Grotesk, weight 700–800
+• Body / Caption: Plus Jakarta Sans, weight 400–600
+
+LOGO DA USARE NELLE GRAFICHE:
+• Su sfondo chiaro o arancione → logo-horizontal-dark.png
+• Su sfondo scuro o nero → logo-horizontal-white.png
+• Solo icona (spazio ridotto) → logo-icon.png / logo-icon-white.png
+
+TEMPLATE DISPONIBILI (8 layout 1080×1440px):
+1. Chiaro CTA — sfondo #FDFCF8, titolo 3 righe dark/arancione/dark, CTA pill arancione
+2. Scuro Imgcard — sfondo #040407, area immagine + card off-white con accent orange
+3. Scuro Glow — sfondo #040407 con alone radiale arancione, logo bianco in alto
+4. Grigio Imgtitle — sfondo #3A3A3A, icona + immagine + titolo bianco/arancione
+5. Grigio Imgcard — sfondo #3A3A3A, icona + immagine + card bianca con CTA
+6. Arancione Bold — sfondo #FF6B03, logo dark, titolo bianco gigante
+7. Scuro Clean — sfondo #040407, icona + titolo 2 righe + testo corpo
+8. Split — 55% immagine scura / 45% off-white con testo + logo
+
+━━ AUTORE: ALBERTO RIOLFO ━━
+Tono di voce: pragmatico, empatico, da operatore a operatore. Sa cosa succede davvero in negozio. Non vende: condivide ciò che ha imparato sul campo. Il lettore deve sentire che Alberto capisce le sue difficoltà — non che vuole vendergli qualcosa.
+
+Per ascoltare il tono di voce di Alberto: https://www.youtube.com/playlist?list=PLEP09NDROzXE4xA5XPTjtPsLwJG9Ryawu
+
+━━ OBIETTIVO DEL PIANO ━━
+Stimolare Retail Manager, CEO, CMO del retail italiano a richiedere almeno una demo di Community Retail AI — senza mai chiederglielo esplicitamente. Il post lavora sulla fiducia e sul riconoscimento.
+
+━━ TEMI SETTIMANALI (ruota su questi 3 assi) ━━
+A. I problemi quotidiani dei retail manager
+   Es: turnover commessi, assenza di dati sul cliente fisico, promozioni a pioggia inefficaci, difficoltà a misurare il lavoro del punto vendita
+B. Come ingaggiare chi compra partendo dal negozio fisico
+   Es: loyalty basata sul comportamento reale in store, SMS personalizzati post-acquisto, segmentazione RFM, azioni quotidiane dell'Action Center
+C. Come le aziende retail recuperano fatturato con Community Retail AI
+   Es: case study anonimizzati con dati reali, confronti prima/dopo attivazione, numeri su ricorrenza acquisto, scontrino medio, tasso di ritorno
+
+━━ PIANO DELLA SETTIMANA [INSERISCI DATE: es. 9–15 giugno 2026] ━━
+Tema focus di questa settimana: [INSERISCI TEMA PRINCIPALE]
+
+Crea 7 post (uno al giorno). Per ogni post fornisci:
+
+1. GIORNO e DATA
+2. TEMA dell'asse (A / B / C)
+3. TEMPLATE CONSIGLIATO (scegli tra gli 8 disponibili)
+4. FRASE HOOK per la grafica (con numero realistico — es. "Il 68% dei clienti non torna dopo il primo acquisto")
+5. TESTO DEL POST (max 200 parole — regole sotto)
+6. HASHTAG: #CommunityRetailAI + 3 hashtag verticali
+
+━━ REGOLE FERREE PER OGNI POST ━━
+✗ Zero call to action esplicite in chiusura — il tono deve dire: "capisco i tuoi problemi e so come affrontarli"
+✗ Zero aggettivi vuoti: "innovativo", "rivoluzionario", "game-changer", "AI-powered" senza numeri
+✗ Zero bullet point, trattini, linee — solo testo puro
+✗ Non mettere prima tutti i post e poi le grafiche: grafica e testo devono stare insieme post per post
+✓ Grassetti e corsivi su percentuali, problemi citati, parole persuasive chiave
+✓ HOOK alla prima riga: numero o affermazione verificabile, nessuna intro
+✓ CONTESTO preciso: es. "rete 12 store, abbigliamento, Triveneto, aprile 2026" — mai "i nostri clienti"
+✓ Ogni claim ha una fonte o un dato di riferimento realistico
+✓ Formato grafica: .jpg, 1080×1440px, colori e font come da brand sopra`;
+
+function renderGiuliaPrompt() {
+  const el = document.getElementById('giulia-prompt-rendered');
+  if (!el) return;
+  // Render with section headers highlighted and placeholders colored
+  const html = GIULIA_PROMPT
+    .replace(/\[([^\]]+)\]/g, '<span class="g-ph">[$1]</span>')
+    .replace(/(━━[^━]+━━)/g, '<span class="g-section">$1</span>');
+  el.innerHTML = html;
+}
+
+function copyGiuliaPrompt(btn) {
+  navigator.clipboard.writeText(GIULIA_PROMPT).then(() => {
+    const btns = document.querySelectorAll('.giulia-copy-btn');
+    btns.forEach(b => { b.textContent = 'Copiato ✓'; b.classList.add('done'); });
+    setTimeout(() => {
+      btns.forEach(b => { b.textContent = 'Copia prompt'; b.classList.remove('done'); });
+    }, 2400);
+  });
+}
+
+// Init Giulia section (script è in fondo al body, DOM già pronto)
+renderGiuliaPrompt();
 
 // ──────────────────────────────────────────────────────────────
 // SOCIAL TABS
