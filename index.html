@@ -771,6 +771,77 @@
     ::-webkit-scrollbar-track{background:transparent;}
     ::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px;}
 
+    /* ── 6 TEMPLATE STAT-FIRST ─────────────────── */
+
+    /* stat-ld: off-white top / dark bottom */
+    .tpl-stat-ld{background:#FDFCF8;padding:0;flex-direction:column;}
+    .sld-top{flex:0 0 57%;padding:6% 7% 4%;display:flex;flex-direction:column;background:#FDFCF8;}
+    .sld-logo{width:clamp(100px,34%,190px);height:auto;display:block;}
+    .sld-kpi{font-family:var(--fd);font-weight:800;font-size:clamp(36px,14vw,96px);color:#FF6B03;line-height:1;margin-top:auto;}
+    .sld-divider{width:100%;height:1px;background:#FF6B03;opacity:.6;margin:5% 0 4%;}
+    .sld-body{font-family:var(--fd);font-weight:700;font-size:clamp(13px,4vw,26px);color:#040407;line-height:1.15;}
+    .sld-bottom{flex:1;padding:6% 7%;background:#040407;display:flex;flex-direction:column;justify-content:space-between;}
+    .sld-kpi2{font-family:var(--fd);font-weight:800;font-size:clamp(20px,6.5vw,44px);color:#FF6B03;line-height:1;}
+    .sld-body2{font-size:clamp(10px,2.2vw,14px);color:rgba(253,252,248,.65);line-height:1.55;margin-top:4%;font-family:'Courier New',monospace;}
+    .sld-url{font-family:var(--fd);font-size:clamp(9px,1.8vw,13px);font-weight:600;color:#FF6B03;margin-top:auto;}
+
+    /* stat-dl: dark top / off-white bottom */
+    .tpl-stat-dl{background:#040407;padding:0;flex-direction:column;}
+    .sdl-top{flex:0 0 63%;padding:6% 7% 4%;display:flex;flex-direction:column;background:#040407;}
+    .sdl-icon{width:clamp(36px,9%,56px);height:auto;display:block;}
+    .sdl-kpi{font-family:var(--fd);font-weight:800;font-size:clamp(48px,18vw,130px);color:#FF6B03;line-height:.95;margin-top:auto;}
+    .sdl-divider{width:100%;height:1px;background:#FF6B03;opacity:.6;margin:5% 0 4%;}
+    .sdl-body{font-family:var(--fd);font-weight:700;font-size:clamp(13px,4vw,26px);color:#FDFCF8;line-height:1.15;}
+    .sdl-bottom{flex:1;padding:6% 7%;background:#FDFCF8;display:flex;flex-direction:column;justify-content:space-between;}
+    .sdl-kpi2{font-family:var(--fd);font-weight:800;font-size:clamp(20px,6.5vw,44px);color:#FF6B03;line-height:1;}
+    .sdl-body2{font-size:clamp(10px,2.2vw,14px);color:#040407;opacity:.75;line-height:1.55;margin-top:4%;font-family:'Courier New',monospace;}
+    .sdl-url{font-family:var(--fd);font-size:clamp(9px,1.8vw,13px);font-weight:600;color:#FF6B03;margin-top:auto;}
+
+    /* stat-do: dark top / orange bottom */
+    .tpl-stat-do{background:#040407;padding:0;flex-direction:column;}
+    .sdo-top{flex:0 0 58%;padding:6% 7% 4%;display:flex;flex-direction:column;background:#040407;}
+    .sdo-logo{width:clamp(100px,34%,190px);height:auto;display:block;}
+    .sdo-kpi{font-family:var(--fd);font-weight:800;font-size:clamp(44px,16vw,115px);color:#FF6B03;line-height:.95;margin-top:auto;}
+    .sdo-kpi2{font-family:var(--fd);font-weight:800;font-size:clamp(18px,5.5vw,38px);color:rgba(253,252,248,.35);line-height:1;margin-top:2%;}
+    .sdo-body{font-family:var(--fd);font-weight:700;font-size:clamp(13px,4vw,26px);color:#FDFCF8;line-height:1.15;margin-top:4%;}
+    .sdo-divider{width:100%;height:1px;background:#FF6B03;opacity:.5;margin-top:auto;}
+    .sdo-bottom{flex:1;padding:6% 7%;background:#FF6B03;display:flex;flex-direction:column;justify-content:space-between;}
+    .sdo-kpi3{font-family:var(--fd);font-weight:800;font-size:clamp(20px,6.5vw,44px);color:#FDFCF8;line-height:1;}
+    .sdo-body2{font-size:clamp(10px,2.2vw,14px);color:rgba(4,4,7,.7);line-height:1.55;margin-top:4%;font-family:'Courier New',monospace;}
+    .sdo-url{font-family:var(--fd);font-size:clamp(9px,1.8vw,13px);font-weight:600;color:rgba(4,4,7,.7);margin-top:auto;}
+
+    /* stat-col: dark with vertical orange accent + comparison */
+    .tpl-stat-col{background:#040407;padding:0;position:relative;}
+    .scol-vline{position:absolute;left:9%;top:0;width:1.5px;height:100%;background:#FF6B03;opacity:.7;}
+    .scol-inner{width:100%;flex:1;display:flex;flex-direction:column;padding:6% 7% 6% 14%;}
+    .scol-logo{width:clamp(100px,34%,190px);height:auto;display:block;}
+    .scol-kpi{font-family:var(--fd);font-weight:800;font-size:clamp(44px,16vw,115px);color:#FF6B03;line-height:.95;margin-top:auto;}
+    .scol-compare{font-family:var(--fd);font-weight:800;font-size:clamp(16px,5vw,34px);color:rgba(253,252,248,.3);line-height:1;margin-top:2%;}
+    .scol-body{font-family:var(--fd);font-weight:700;font-size:clamp(12px,3.5vw,24px);color:#FDFCF8;line-height:1.2;margin-top:5%;}
+    .scol-divider{width:100%;height:1px;background:#FF6B03;opacity:.5;margin-top:auto;margin-bottom:5%;}
+    .scol-foot{background:#FF6B03;margin:0 -7% -6% -14%;padding:5% 7% 5% 14%;display:flex;flex-direction:column;gap:3%;}
+    .scol-kpi2{font-family:var(--fd);font-weight:800;font-size:clamp(18px,5.5vw,38px);color:#FDFCF8;line-height:1;}
+    .scol-body2{font-size:clamp(10px,2.2vw,14px);color:rgba(4,4,7,.75);line-height:1.5;font-family:'Courier New',monospace;}
+    .scol-url{position:absolute;left:2.5%;top:50%;transform:translateY(-50%) rotate(-90deg);font-family:var(--fd);font-size:clamp(7px,1.4vw,10px);font-weight:700;color:rgba(255,107,3,.6);white-space:nowrap;letter-spacing:.06em;}
+
+    /* stat-hero: full off-white, giant number */
+    .tpl-stat-hero{background:#FDFCF8;}
+    .shr-inner{width:100%;height:100%;display:flex;flex-direction:column;padding:7%;}
+    .shr-logo{width:clamp(120px,40%,220px);height:auto;display:block;}
+    .shr-kpi{font-family:var(--fd);font-weight:800;font-size:clamp(44px,17vw,124px);color:#FF6B03;line-height:.92;margin-top:auto;}
+    .shr-divider{width:100%;height:1px;background:#FF6B03;opacity:.55;margin:5% 0 5%;}
+    .shr-body{font-family:var(--fd);font-weight:700;font-size:clamp(14px,4.5vw,30px);color:#040407;line-height:1.15;}
+    .shr-url{font-family:var(--fd);font-size:clamp(10px,2vw,14px);font-weight:600;color:#FF6B03;margin-top:auto;}
+
+    /* stat-clean: off-white, standard clean */
+    .tpl-stat-clean{background:#FDFCF8;}
+    .sclean-inner{width:100%;height:100%;display:flex;flex-direction:column;padding:7%;}
+    .sclean-logo{width:clamp(100px,34%,190px);height:auto;display:block;}
+    .sclean-kpi{font-family:var(--fd);font-weight:800;font-size:clamp(36px,13vw,92px);color:#FF6B03;line-height:1;margin-top:auto;}
+    .sclean-divider{width:100%;height:1px;background:#FF6B03;opacity:.55;margin:5% 0 5%;}
+    .sclean-body{font-family:var(--fd);font-weight:700;font-size:clamp(13px,4vw,26px);color:#040407;line-height:1.15;}
+    .sclean-url{font-family:var(--fd);font-size:clamp(10px,2vw,14px);font-weight:600;color:#FF6B03;margin-top:auto;}
+
     /* ── SEZIONE PROMPT GIULIA ─────────────────── */
     .giulia-intro{
       background:rgba(255,107,3,.06);border:1px solid rgba(255,107,3,.2);
@@ -862,6 +933,7 @@
       <div class="nav-section-title">Tool</div>
       <a class="nav-a" href="#studio"><span class="nav-pip"></span>🎨 Template Studio</a>
       <a class="nav-a" href="#piano-linkedin"><span class="nav-pip"></span>✍️ Prompt Giulia</a>
+      <a class="nav-a" href="#piano-stat"><span class="nav-pip"></span>📊 Prompt Giulia Stat</a>
     </div>
   </nav>
   <div class="sb-foot">v2.0 · Maggio 2026<br>Websonica Srl · Padova</div>
@@ -1399,7 +1471,7 @@
 
   <!-- TEMPLATE GALLERY "IN VISTA" -->
   <div class="tpl-gallery">
-    <div class="tpl-gallery-title">8 template disponibili</div>
+    <div class="tpl-gallery-title">14 template disponibili</div>
     <div class="tpl-gallery-sub">Layout statici — seleziona un template nell'editor per personalizzarlo</div>
     <div class="tpl-gallery-grid">
       <div class="tpl-gallery-item">
@@ -1433,6 +1505,30 @@
       <div class="tpl-gallery-item">
         <img src="tpl-preview-split.png" alt="Split">
         <div class="tpl-gallery-lbl">Split</div>
+      </div>
+      <div class="tpl-gallery-item">
+        <img src="tpl-preview-stat-ld.png" alt="Stat Chiaro/Scuro">
+        <div class="tpl-gallery-lbl">Stat · Chiaro/Scuro</div>
+      </div>
+      <div class="tpl-gallery-item">
+        <img src="tpl-preview-stat-dl.png" alt="Stat Scuro/Chiaro">
+        <div class="tpl-gallery-lbl">Stat · Scuro/Chiaro</div>
+      </div>
+      <div class="tpl-gallery-item">
+        <img src="tpl-preview-stat-do.png" alt="Stat Scuro/Arancio">
+        <div class="tpl-gallery-lbl">Stat · Scuro/Arancio</div>
+      </div>
+      <div class="tpl-gallery-item">
+        <img src="tpl-preview-stat-col.png" alt="Stat Colonna">
+        <div class="tpl-gallery-lbl">Stat · Colonna</div>
+      </div>
+      <div class="tpl-gallery-item">
+        <img src="tpl-preview-stat-hero.png" alt="Stat Hero Chiaro">
+        <div class="tpl-gallery-lbl">Stat · Hero Chiaro</div>
+      </div>
+      <div class="tpl-gallery-item">
+        <img src="tpl-preview-stat-clean.png" alt="Stat Clean Chiaro">
+        <div class="tpl-gallery-lbl">Stat · Clean Chiaro</div>
       </div>
     </div>
   </div>
@@ -1486,6 +1582,12 @@
           <div class="radio"     data-tpl="orange-bold"    onclick="selectTplType(this)">Arancione · Bold</div>
           <div class="radio"     data-tpl="dark-clean"     onclick="selectTplType(this)">Scuro · Clean</div>
           <div class="radio"     data-tpl="split"          onclick="selectTplType(this)">Split</div>
+          <div class="radio"     data-tpl="stat-ld"        onclick="selectTplType(this)">Stat · Chiaro/Scuro</div>
+          <div class="radio"     data-tpl="stat-dl"        onclick="selectTplType(this)">Stat · Scuro/Chiaro</div>
+          <div class="radio"     data-tpl="stat-do"        onclick="selectTplType(this)">Stat · Scuro/Arancio</div>
+          <div class="radio"     data-tpl="stat-col"       onclick="selectTplType(this)">Stat · Colonna</div>
+          <div class="radio"     data-tpl="stat-hero"      onclick="selectTplType(this)">Stat · Hero Chiaro</div>
+          <div class="radio"     data-tpl="stat-clean"     onclick="selectTplType(this)">Stat · Clean Chiaro</div>
         </div>
       </div>
 
@@ -1566,6 +1668,44 @@
 
 </section>
 
+<!-- ── 09 PROMPT GIULIA — TEMPLATE STAT-FIRST ── -->
+<section id="piano-stat" class="sec sec-alt">
+  <div class="slabel">// 09 · Prompt Giulia Stat</div>
+  <h2 class="sh2">Piano editoriale LinkedIn<br><em>— formato numero-hero</em></h2>
+  <p class="sp">Versione dedicata ai 6 template <strong>stat-first</strong> (Chiaro/Scuro, Scuro/Chiaro, Scuro/Arancio, Colonna, Hero, Clean). Questi layout mettono un KPI o percentuale al centro della grafica — il prompt è calibrato per generare testi e grafiche che usano il numero come hook primario.</p>
+
+  <div class="giulia-intro">
+    <div class="giulia-avatar">📊</div>
+    <div>
+      <div class="giulia-intro-title">Differenze rispetto al prompt standard</div>
+      <div class="giulia-intro-body">Il prompt generale lavora su 3 assi tematici con grafica libera. Questo prompt stat-first parte sempre da un <strong>numero reale</strong> (% ritorno clienti, scontrino medio, frequenza acquisti, ecc.) e costruisce la grafica e il testo attorno a quel dato. Giulia deve indicare il numero KPI prima ancora del tema.</div>
+    </div>
+  </div>
+
+  <div class="giulia-brand-pills">
+    <div class="g-pill"><div class="g-pill-dot" style="background:#FF6B03;"></div>KPI in arancione #FF6B03</div>
+    <div class="g-pill"><div class="g-pill-dot" style="background:#040407;border:1px solid #444;"></div>Body scuro #040407</div>
+    <div class="g-pill">Space Grotesk 800 — numeri</div>
+    <div class="g-pill">6 layout stat disponibili</div>
+    <div class="g-pill">logo-horizontal-dark.png / white.png</div>
+  </div>
+
+  <div class="giulia-prompt-wrap">
+    <div class="giulia-prompt-head">
+      <div class="giulia-prompt-label">
+        <span style="font-size:16px;">📊</span> Prompt Giulia — Template Stat-First
+      </div>
+      <button class="giulia-copy-btn" onclick="copyStatPrompt(this)">Copia prompt</button>
+    </div>
+    <div class="giulia-prompt-body" id="giulia-stat-rendered"></div>
+    <div class="giulia-prompt-foot">
+      <div class="giulia-prompt-note">Sostituisci le parti <span style="color:var(--primary);font-weight:600;">[IN MAIUSCOLO]</span> con il KPI e la settimana</div>
+      <button class="giulia-copy-btn" onclick="copyStatPrompt(this)">Copia prompt</button>
+    </div>
+  </div>
+
+</section>
+
 </main>
 
 <script>
@@ -1607,6 +1747,14 @@ const TPLS = {
   'orange-bold':   { label:'Arancione · Bold',        bg:'#FF6B03', dark:false, info:'Sfondo arancione pieno, logo dark in alto, 3 righe di titolo bianco gigante. Massima visibilità nel feed per launch e annunci.' },
   'dark-clean':    { label:'Scuro · Clean',           bg:'#040407', dark:true,  info:'Sfondo nero, icona in alto, 2 righe di titolo enorme (bianco + arancione) + testo corpo. Minimalista per claim di posizionamento.' },
   'split':         { label:'Split',                   bg:'#040407', dark:true,  info:'Metà superiore nera con immagine, metà inferiore off-white con testo e logo. Narrativa visiva elegante per storytelling.' },
+
+  /* ── STAT-FIRST TEMPLATES ── */
+  'stat-ld':    { label:'Stat · Chiaro/Scuro',    bg:'#FDFCF8', dark:false, info:'KPI grande arancione su sfondo chiaro + sezione scura in basso con dato secondario. Ideale per confronti o metriche doppie.' },
+  'stat-dl':    { label:'Stat · Scuro/Chiaro',    bg:'#040407', dark:true,  info:'Numero enorme su sfondo nero + sezione off-white in basso. Massimo impatto visivo per un KPI singolo con fonte.' },
+  'stat-do':    { label:'Stat · Scuro/Arancio',   bg:'#040407', dark:true,  info:'KPI gigante su nero + sezione arancione in basso. Alta energia per dati positivi e traguardi.' },
+  'stat-col':   { label:'Stat · Colonna',         bg:'#040407', dark:true,  info:'Layout con linea verticale arancione a sinistra, confronto X/Y e URL verticale. Per post analitici con due metriche correlate.' },
+  'stat-hero':  { label:'Stat · Hero Chiaro',     bg:'#FDFCF8', dark:false, info:'Numero KPI massicciamente grande su off-white pulito. Per dati che parlano da soli senza grafica.' },
+  'stat-clean': { label:'Stat · Clean Chiaro',    bg:'#FDFCF8', dark:false, info:'Layout off-white essenziale con numero + testo. Elegante e leggibile, ideale per statistiche di settore.' },
 };
 
 // ──────────────────────────────────────────────────────────────
@@ -2018,6 +2166,273 @@ Entrambe:
 ✓ Metodo: SMS + segmentazione RFM + Action Center quotidiano
 ✓ CTA: → communityretail.it · Hashtag: #CommunityRetailAI #RetailItaliano + 2 verticali`,
   },
+
+  /* ══════════════════════════════════════════════════
+     9-14 · STAT-FIRST TEMPLATES
+     Tutti condividono la stessa logica: il numero KPI
+     è l'hero visivo, la caption spiega il dato.
+     Differisce solo il layout (split colori, colonna).
+  ══════════════════════════════════════════════════ */
+
+  'stat-ld': {
+    claude: `Sei il copywriter di Community Retail AI.
+
+CONTESTO VISUAL — template STAT CHIARO/SCURO
+Layout: metà superiore off-white con KPI grande + testo, metà inferiore nera con dato secondario.
+KPI PRINCIPALE (arancione, grande): "[NUMERO O %]"
+TESTO PRINCIPALE: "[FRASE CHE SPIEGA IL KPI — es. 'dei clienti non torna dopo il primo acquisto']"
+DATO SECONDARIO (sezione scura): "[NUMERO CORRELATO — es. 'scontrino medio: 68€']"
+FONTE: [RETAIL TYPE · AREA · PERIODO]
+Piattaforma: [LINKEDIN / INSTAGRAM / FACEBOOK / TIKTOK]
+
+Il numero è il protagonista — la caption lo contestualizza.
+
+Struttura:
+1. HOOK: il KPI da solo come prima riga — nudo, senza intro
+2. CONTESTO: rete specifica, anonima ma precisa (es. "catena 8 store, calzature, Emilia, Q1 2026")
+3. PERCHÉ ACCADE: causa operativa reale (commessi senza dati, promo a pioggia, mancanza follow-up)
+4. COSA CAMBIA: Community Retail AI in 1 frase concreta, senza aggettivi
+5. DATO SECONDARIO: il numero della sezione scura, citato nella caption come prova aggiuntiva
+CTA: → communityretail.it
+
+Regole: zero aggettivi, ogni claim ha fonte, tono manager→manager.
+LinkedIn 200–280 car. · Instagram 80–110 · Facebook 250–350`,
+
+    gemini: `Community Retail AI · template STAT CHIARO/SCURO.
+
+KPI PRINCIPALE: "[NUMERO O %]"
+TESTO PRINCIPALE: "[FRASE CHE SPIEGA IL KPI]"
+DATO SECONDARIO (sezione nera): "[NUMERO CORRELATO]"
+FONTE: [RETAIL TYPE · AREA · PERIODO]
+Piattaforma: [LINKEDIN / INSTAGRAM / FACEBOOK / TIKTOK]
+
+OUTPUT: 2 varianti caption
+
+VARIANTE A — Problema → Dato → Causa → Soluzione:
+[KPI come apertura] → [contesto retail preciso] → [causa operativa] → [Community Retail AI come metodo] → → communityretail.it
+
+VARIANTE B — Confronto prima/dopo (usa dato secondario):
+[Situazione prima dell'attivazione] → [metodo introdotto] → [KPI principale + dato secondario come prova doppia] → communityretail.it
+
+Entrambe:
+✓ Fonte anonima ma specifica · ✓ Niente anglicismi · ✓ Hashtag: #CommunityRetailAI + 3 verticali`,
+  },
+
+  'stat-dl': {
+    claude: `Sei il copywriter di Community Retail AI.
+
+CONTESTO VISUAL — template STAT SCURO/CHIARO
+Layout: sfondo nero con numero enorme + testo bianco, sezione off-white in basso con dato secondario.
+KPI (arancione, enorme — occupa tutta la larghezza): "[PERCENTUALE O NUMERO]"
+TESTO (bianco, bold): "[FRASE BREVE CHE SPIEGA IL KPI]"
+DATO SECONDARIO (sezione chiara): "[NUMERO COMPLEMENTARE]"
+FONTE: [RETAIL TYPE · AREA · PERIODO]
+Piattaforma: [LINKEDIN / INSTAGRAM / FACEBOOK / TIKTOK]
+
+Il layout scuro amplifica l'urgenza del dato. La caption deve avere lo stesso peso.
+
+Struttura:
+1. HOOK: il KPI da solo — non spiegare ancora, lascialo respirare
+2. ROTTURA: perché quel numero dovrebbe preoccupare chi gestisce un retail
+3. MECCANISMO: come Community Retail AI attacca il problema (SMS · RFM · Action Center)
+4. DATO SECONDARIO: come conferma o misura del miglioramento
+5. CTA: → communityretail.it
+
+Tono: diretto, asciutto, chi conosce il problema sul campo.
+LinkedIn 200–280 · Instagram 80–110 · Facebook 250–350`,
+
+    gemini: `Community Retail AI · template STAT SCURO/CHIARO.
+
+KPI ENORME: "[PERCENTUALE O NUMERO]"
+TESTO BIANCO: "[FRASE BREVE]"
+DATO SECONDARIO (sezione chiara): "[NUMERO COMPLEMENTARE]"
+FONTE: [RETAIL TYPE · AREA · PERIODO]
+Piattaforma: [LINKEDIN / INSTAGRAM / FACEBOOK / TIKTOK]
+
+OUTPUT: 2 varianti caption
+
+VARIANTE A — Impatto diretto:
+[KPI apre il post] → [rottura: perché questo numero è un problema sistemico nel retail italiano] → [Community Retail AI: metodo in 1 frase] → [dato secondario come prova] → communityretail.it
+
+VARIANTE B — Empatia → Dati → Metodo:
+[Situazione quotidiana riconoscibile per un retail manager] → [il KPI come misurazione del problema] → [soluzione con dato secondario] → communityretail.it
+
+✓ Ogni claim verificabile · ✓ Zero "innovativo" · ✓ #CommunityRetailAI + 3 hashtag verticali`,
+  },
+
+  'stat-do': {
+    claude: `Sei il copywriter di Community Retail AI.
+
+CONTESTO VISUAL — template STAT SCURO/ARANCIO
+Layout: sfondo nero con KPI grande + dato grigio secondario + testo bianco, sezione arancione in basso.
+KPI PRINCIPALE (arancione, grande): "[NUMERO O %]"
+KPI SECONDARIO (grigio, più piccolo — sotto il principale): "[NUMERO COMPLEMENTARE]"
+TESTO BIANCO (bold): "[FRASE CHE SPIEGA I DUE DATI]"
+SEZIONE ARANCIONE: "[DATO O FRASE CONCLUSIVA]"
+FONTE: [RETAIL TYPE · AREA · PERIODO]
+Piattaforma: [LINKEDIN / INSTAGRAM / FACEBOOK / TIKTOK]
+
+Il doppio KPI suggerisce un confronto (es. prima/dopo, obiettivo/risultato).
+La sezione arancione è la punchline energetica.
+
+Struttura:
+1. HOOK: KPI principale da solo
+2. CONTESTO: chi, dove, quando
+3. TENSIONE: cosa significano i due numeri insieme (es. "perdeva il 73% dei clienti, oggi ne recupera il 41%")
+4. SEZIONE ARANCIONE: la frase conclusiva — deve essere la più memorabile
+5. CTA: → communityretail.it
+
+Tono: alta energia, dati come prova concreta.
+LinkedIn 200–280 · Instagram 80–110 · Facebook 250–350`,
+
+    gemini: `Community Retail AI · template STAT SCURO/ARANCIO (sfondo nero + footer arancione).
+
+KPI PRINCIPALE: "[NUMERO O %]"
+KPI SECONDARIO: "[NUMERO COMPLEMENTARE]"
+TESTO BIANCO: "[FRASE CHE COLLEGA I DUE KPI]"
+SEZIONE ARANCIONE (punchline): "[FRASE O DATO CONCLUSIVO]"
+FONTE: [RETAIL TYPE · AREA · PERIODO]
+Piattaforma: [LINKEDIN / INSTAGRAM / FACEBOOK / TIKTOK]
+
+OUTPUT: 2 varianti
+
+VARIANTE A — Tensione numerica:
+[KPI principale come apertura] → [KPI secondario come contrasto o conferma] → [Community Retail AI come ponte tra i due] → [sezione arancione = la frase che resta impressa] → communityretail.it
+
+VARIANTE B — Prima/Dopo energetico:
+[Prima dell'attivazione: il problema in numeri] → [dopo: i due KPI come prova] → [punchline arancione come chiusura] → communityretail.it
+
+✓ Doppio KPI deve creare narrativa · ✓ Fonte precisa e anonima · ✓ #CommunityRetailAI + 3 verticali`,
+  },
+
+  'stat-col': {
+    claude: `Sei il copywriter di Community Retail AI.
+
+CONTESTO VISUAL — template STAT COLONNA
+Layout: sfondo nero con linea verticale arancione a sinistra, KPI grande + confronto X/Y + testo lungo + footer arancione.
+KPI PRINCIPALE (arancione, enorme): "[PERCENTUALE O NUMERO]"
+CONFRONTO X/Y (grigio, sotto il KPI): "[VALORE PRIMA] / [VALORE DOPO]"
+TESTO LUNGO (bianco): "[DESCRIZIONE PIÙ ARTICOLATA — 2-3 righe]"
+FOOTER ARANCIONE: "[KPI O FRASE FINALE]"
+FONTE: [RETAIL TYPE · AREA · PERIODO]
+Piattaforma: [LINKEDIN / INSTAGRAM / FACEBOOK / TIKTOK]
+
+Questo template ha più spazio testo degli altri — usalo per post più analitici.
+Il formato X/Y suggerisce un confronto temporale o tra segmenti.
+
+Struttura:
+1. HOOK: il KPI enorme come apertura
+2. CONFRONTO: spiega il X/Y (es. "3,2 acquisti/anno → 5,7 dopo attivazione RFM")
+3. CONTESTO: retail specifico, periodo, metodo
+4. TESTO LUNGO: il "perché" operativo, più spazio rispetto agli altri template
+5. FOOTER: la frase conclusiva — deve essere sintetica e potente
+6. CTA: → communityretail.it
+
+Lunghezze: LinkedIn 250–320 · Instagram 100–130 · Facebook 300–400`,
+
+    gemini: `Community Retail AI · template STAT COLONNA (più spazio testo, confronto X/Y).
+
+KPI PRINCIPALE: "[NUMERO O %]"
+CONFRONTO X/Y: "[VALORE PRIMA] / [VALORE DOPO]"
+TESTO LUNGO: "[ANALISI O SPIEGAZIONE — 2-3 righe]"
+FOOTER ARANCIONE: "[KPI O FRASE FINALE]"
+FONTE: [RETAIL TYPE · AREA · PERIODO]
+Piattaforma: [LINKEDIN / INSTAGRAM / FACEBOOK / TIKTOK]
+
+OUTPUT: 2 varianti
+
+VARIANTE A — Analitica (più dati, più contesto):
+[KPI come apertura] → [spiegazione del confronto X/Y con dati precisi] → [metodo Community Retail AI dettagliato] → [footer come punchline] → communityretail.it
+
+VARIANTE B — Narrativa (storia + dati):
+[Situazione del retail prima] → [il percorso di attivazione (RFM + SMS + Action Center)] → [confronto X/Y come prova] → [footer come prospettiva] → communityretail.it
+
+✓ Più spazio = più profondità, non più aggettivi · ✓ X/Y deve essere verificabile · ✓ #CommunityRetailAI + 3 verticali`,
+  },
+
+  'stat-hero': {
+    claude: `Sei il copywriter di Community Retail AI.
+
+CONTESTO VISUAL — template STAT HERO CHIARO
+Layout: sfondo off-white pulito, numero KPI massicciamente grande (occupa quasi tutta la larghezza), testo bold.
+KPI HERO (arancione, grandissimo): "[NUMERO O %]"
+TESTO (scuro, bold): "[FRASE CHE SPIEGA IL KPI — max 2 righe corte]"
+FONTE: [RETAIL TYPE · AREA · PERIODO]
+Piattaforma: [LINKEDIN / INSTAGRAM / FACEBOOK / TIKTOK]
+
+Il numero è così grande che è impossibile non vederlo. Il testo sotto deve essere lapidario.
+
+Struttura:
+1. HOOK: il KPI come titolo assoluto — la prima riga della caption lo riprende o lo amplifica
+2. SILENZIO OPERATIVO: 1 frase che dice dove nasce quel numero (senza nomi, ma precisa)
+3. IMPLICAZIONE: cosa dovrebbe chiedersi chi gestisce uno store simile
+4. CTA: → communityretail.it
+
+Il testo del post deve essere corto. Il numero fa il 70% del lavoro.
+LinkedIn 150–200 car. · Instagram 60–90 · Facebook 180–250`,
+
+    gemini: `Community Retail AI · template STAT HERO (numero gigantesco su off-white).
+
+KPI HERO: "[NUMERO O %]"
+TESTO: "[FRASE LAPIDARIA — max 10 parole]"
+FONTE: [RETAIL TYPE · AREA · PERIODO]
+Piattaforma: [LINKEDIN / INSTAGRAM / FACEBOOK / TIKTOK]
+
+Il numero parla da solo. La caption deve essere la più corta di tutti i template.
+
+OUTPUT: 2 varianti (entrambe brevi — max 180 car. su LinkedIn)
+
+VARIANTE A — Il numero apre, la frase chiude:
+[Il KPI scritto in lettere o contestualizzato] → [1 frase operativa precisa] → communityretail.it
+
+VARIANTE B — Domanda retorica + risposta:
+[Domanda che il retail manager si fa ogni lunedì mattina] → [il KPI come risposta] → [1 frase su Community Retail AI] → communityretail.it
+
+✓ Brevità = forza · ✓ Zero riempitivi · ✓ #CommunityRetailAI + 2 hashtag verticali (meno = più)`,
+  },
+
+  'stat-clean': {
+    claude: `Sei il copywriter di Community Retail AI.
+
+CONTESTO VISUAL — template STAT CLEAN CHIARO
+Layout: off-white essenziale, logo + numero arancione + linea divisore + testo bold + URL.
+KPI (arancione, grande): "[NUMERO O %]"
+TESTO (scuro, bold): "[FRASE CHE SPIEGA IL KPI]"
+URL in basso: www.communityretail.it
+FONTE: [RETAIL TYPE · AREA · PERIODO]
+Piattaforma: [LINKEDIN / INSTAGRAM / FACEBOOK / TIKTOK]
+
+Il layout è il più elegante e istituzionale. Adatto a contenuti autorevoli (dati di settore, ricerche, benchmark).
+
+Struttura:
+1. HOOK: il KPI da solo
+2. BENCHMARK: il contesto di settore (il dato è migliore o peggiore della media? di quanto?)
+3. INSIGHT OPERATIVO: cosa cambia nella gestione quotidiana dello store quando si conosce questo dato
+4. Community Retail AI: 1 frase sul metodo concreto (no marketing, no aggettivi)
+5. CTA: → communityretail.it
+
+Tono: autorevole, basato su dati di settore, pensiero da consulente senior.
+LinkedIn 200–280 · Instagram 80–110 · Facebook 250–350`,
+
+    gemini: `Community Retail AI · template STAT CLEAN (layout istituzionale off-white).
+
+KPI: "[NUMERO O %]"
+TESTO: "[FRASE CHE SPIEGA IL KPI]"
+FONTE: [RETAIL TYPE · AREA · PERIODO]
+Piattaforma: [LINKEDIN / INSTAGRAM / FACEBOOK / TIKTOK]
+
+Il template più elegante — usalo per dati autorevoli e benchmark di settore.
+
+OUTPUT: 2 varianti
+
+VARIANTE A — Benchmark:
+[KPI in apertura] → [benchmark di settore: come si confronta con la media italiana] → [implicazione per chi gestisce retail simile] → [Community Retail AI come strumento operativo] → communityretail.it
+
+VARIANTE B — Insight da consulente:
+[Osservazione di settore non ovvia] → [il KPI come evidenza] → [3 leve operative concrete (senza nominare il prodotto subito)] → [Community Retail AI come infrastruttura che le abilita] → communityretail.it
+
+✓ Tono autorevole ma non accademico · ✓ Fonte verificabile · ✓ #CommunityRetailAI + 3 verticali`,
+  },
 };
 
 // ──────────────────────────────────────────────────────────────
@@ -2155,6 +2570,92 @@ function renderCanvas() {
         <div class="sp-bottom">
           <div class="sp-text">13.580 clienti tornati in negozio in 5 mesi.</div>
           <img class="sp-logo" src="${logoHorizDark}" alt="logo">
+        </div>
+      </div>`,
+
+    /* ── STAT-FIRST ── */
+    'stat-ld': `
+      <div class="tpl tpl-stat-ld">
+        <div class="sld-top">
+          <img class="sld-logo" src="${logoHorizDark}" alt="logo">
+          <div class="sld-kpi">1.234€</div>
+          <div class="sld-divider"></div>
+          <div class="sld-body">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem</div>
+        </div>
+        <div class="sld-bottom">
+          <div class="sld-kpi2">1.234€</div>
+          <div class="sld-body2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem</div>
+          <div class="sld-url">www.communityretail.it</div>
+        </div>
+      </div>`,
+
+    'stat-dl': `
+      <div class="tpl tpl-stat-dl">
+        <div class="sdl-top">
+          <img class="sdl-icon" src="${iconWhite}" alt="logo">
+          <div class="sdl-kpi">80%</div>
+          <div class="sdl-divider"></div>
+          <div class="sdl-body">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
+        </div>
+        <div class="sdl-bottom">
+          <div class="sdl-kpi2">1.234€</div>
+          <div class="sdl-body2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem</div>
+          <div class="sdl-url">www.communityretail.it</div>
+        </div>
+      </div>`,
+
+    'stat-do': `
+      <div class="tpl tpl-stat-do">
+        <div class="sdo-top">
+          <img class="sdo-logo" src="${logoHorizWhite}" alt="logo">
+          <div class="sdo-kpi">80%</div>
+          <div class="sdo-kpi2">1.234€</div>
+          <div class="sdo-body">Lorem Ipsum is simply dummy text of the printing and</div>
+          <div class="sdo-divider"></div>
+        </div>
+        <div class="sdo-bottom">
+          <div class="sdo-kpi3">1.234€</div>
+          <div class="sdo-body2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem</div>
+          <div class="sdo-url">www.communityretail.it</div>
+        </div>
+      </div>`,
+
+    'stat-col': `
+      <div class="tpl tpl-stat-col">
+        <div class="scol-vline"></div>
+        <div class="scol-url">www.communityretail.it</div>
+        <div class="scol-inner">
+          <img class="scol-logo" src="${logoHorizWhite}" alt="logo">
+          <div class="scol-kpi">80%</div>
+          <div class="scol-compare">1.234€ / 1.234€</div>
+          <div class="scol-body">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever</div>
+          <div class="scol-divider"></div>
+          <div class="scol-foot">
+            <div class="scol-kpi2">1.234€</div>
+            <div class="scol-body2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem</div>
+          </div>
+        </div>
+      </div>`,
+
+    'stat-hero': `
+      <div class="tpl tpl-stat-hero">
+        <div class="shr-inner">
+          <img class="shr-logo" src="${logoHorizDark}" alt="logo">
+          <div class="shr-kpi">1.234€</div>
+          <div class="shr-divider"></div>
+          <div class="shr-body">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem</div>
+          <div class="shr-url">www.communityretail.it</div>
+        </div>
+      </div>`,
+
+    'stat-clean': `
+      <div class="tpl tpl-stat-clean">
+        <div class="sclean-inner">
+          <img class="sclean-logo" src="${logoHorizDark}" alt="logo">
+          <div class="sclean-kpi">1.234€</div>
+          <div class="sclean-divider"></div>
+          <div class="sclean-body">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem</div>
+          <div class="sclean-url">www.communityretail.it</div>
         </div>
       </div>`,
   };
@@ -2409,6 +2910,93 @@ function copyGiuliaPrompt(btn) {
 
 // Init Giulia section (script è in fondo al body, DOM già pronto)
 renderGiuliaPrompt();
+
+// ──────────────────────────────────────────────────────────────
+// PROMPT GIULIA — STAT-FIRST (template numerici)
+// ──────────────────────────────────────────────────────────────
+const GIULIA_STAT_PROMPT = `Sei il content strategist LinkedIn di Community Retail AI — versione STAT-FIRST.
+
+━━ DIFFERENZA RISPETTO AL PROMPT STANDARD ━━
+Questo prompt è dedicato ai 6 template "stat-first" del brandbook. Ogni post deve partire da un numero reale (KPI, %, €) che diventa l'hero visivo della grafica. Il dato non è un supporto — È il titolo.
+
+━━ BRAND COMMUNITY RETAIL AI ━━
+Sito: communityretail.it
+Palette: #FF6B03 (orange) · #040407 (dark) · #FDFCF8 (off-white) · #3A3A3A (gray)
+Font: Space Grotesk 800 per i numeri · Plus Jakarta Sans per il body
+Logo su sfondo chiaro: logo-horizontal-dark.png
+Logo su sfondo scuro/arancio: logo-horizontal-white.png
+
+━━ 6 TEMPLATE STAT DISPONIBILI ━━
+1. STAT CHIARO/SCURO — off-white top (KPI grande + testo) + nero bottom (dato secondario)
+2. STAT SCURO/CHIARO — nero top (KPI enorme + testo bianco) + off-white bottom (dato complementare)
+3. STAT SCURO/ARANCIO — nero top (KPI + KPI secondario grigio + testo) + arancione bottom (punchline)
+4. STAT COLONNA — nero full con linea verticale arancione sinistra + confronto X/Y + footer arancione
+5. STAT HERO CHIARO — off-white pulito, KPI massicciamente grande (quasi full-width)
+6. STAT CLEAN CHIARO — off-white istituzionale, KPI standard + testo autorevole
+
+━━ AUTORE: ALBERTO RIOLFO ━━
+Tono: pragmatico, da operatore a operatore. Il numero che mette in grafica deve essere realistico, verificabile, tratto dall'esperienza con reti retail italiane. Zero iperbole — solo dati che chi gestisce uno store riconosce come veri.
+
+━━ PIANO STAT-FIRST SETTIMANALE (7 post · 1 al giorno) ━━
+Settimana: [INSERISCI DATE: es. 9–15 giugno 2026]
+KPI focus della settimana: [INSERISCI KPI PRINCIPALE: es. "tasso di ritorno clienti" / "scontrino medio" / "frequenza acquisti"]
+
+Per ogni post fornisci:
+1. GIORNO e DATA
+2. TEMPLATE STAT consigliato (uno dei 6)
+3. KPI HERO da mettere in grafica (numero + unità — es. "68%" / "1.240€" / "2,3x")
+4. DATO SECONDARIO (per template con sezione doppia — es. scontrino medio, n° store, periodo)
+5. TESTO del post (regole sotto)
+6. HASHTAG: #CommunityRetailAI + 3 hashtag verticali
+
+━━ TIPI DI KPI (ruota su questi ogni settimana) ━━
+A. Ritorno clienti: % clienti che tornano dopo 30/60/90 giorni
+B. Frequenza acquisti: media annuale per cliente attivo vs inattivo
+C. Scontrino medio: differenza tra clienti segmentati RFM vs non segmentati
+D. Recupero clienti dormienti: % riattivati con SMS personalizzato vs promo standard
+E. Efficacia Action Center: n° azioni quotidiane completate vs KPI raggiunto
+F. Confronto store: differenza di performance tra store che usa Community Retail AI e store controllo
+
+━━ REGOLE FERREE PER OGNI POST ━━
+✗ Zero call to action esplicite — il numero fa il lavoro
+✗ Zero aggettivi vuoti ("innovativo", "rivoluzionario", "game-changer")
+✗ Zero bullet point, trattini, linee — solo testo puro
+✓ Il KPI in grafica e il testo del post devono essere coerenti (non raccontare cose diverse)
+✓ Grassetti e corsivi su numeri, problemi citati, parole persuasive
+✓ Fonte anonima ma precisa: es. "catena 12 store, fashion, Veneto, Q1 2026"
+✓ I template HERO e CLEAN vogliono post più corti (max 150 parole)
+✓ Il template COLONNA supporta post più lunghi e analitici (fino a 220 parole)
+✓ Grafica e testo adiacenti — mai separati
+
+━━ STRUTTURA TESTO (per ogni post) ━━
+1. HOOK (prima riga): il KPI in parole — es. "Sei clienti su dieci non tornano." — nessuna intro
+2. CONTESTO: chi, dove, quando, settore
+3. MECCANISMO: perché accade (causa operativa, non generica)
+4. DATO SECONDARIO (se presente nella grafica): come rafforza il messaggio
+5. CHIUSURA: riflessione che porta il retail manager a riconoscersi — mai CTA diretta
+
+Crea il piano editoriale LinkedIn per la settimana [INSERISCI DATE].`;
+
+function renderStatPrompt() {
+  const el = document.getElementById('giulia-stat-rendered');
+  if (!el) return;
+  const html = GIULIA_STAT_PROMPT
+    .replace(/\[([^\]]+)\]/g, '<span class="g-ph">[$1]</span>')
+    .replace(/(━━[^━]+━━)/g, '<span class="g-section">$1</span>');
+  el.innerHTML = html;
+}
+
+function copyStatPrompt(btn) {
+  navigator.clipboard.writeText(GIULIA_STAT_PROMPT).then(() => {
+    const btns = document.querySelectorAll('[onclick*="copyStatPrompt"]');
+    btns.forEach(b => { b.textContent = 'Copiato ✓'; b.classList.add('done'); });
+    setTimeout(() => {
+      btns.forEach(b => { b.textContent = 'Copia prompt'; b.classList.remove('done'); });
+    }, 2400);
+  });
+}
+
+renderStatPrompt();
 
 // ──────────────────────────────────────────────────────────────
 // SOCIAL TABS
